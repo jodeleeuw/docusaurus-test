@@ -252,11 +252,11 @@ We can also couch `finishTrial` in a conditional if we want the participant to c
 
 ```javascript
 const button_click_listener = () => {
-	clicks++;
-update_display();
-	if (clicks == 5){
-this.jsPsych.finishTrial(trial_data);
-}
+    clicks++;
+    update_display();
+    if (clicks == 5){
+        this.jsPsych.finishTrial(trial_data);
+    }
 }
 ```
 
@@ -267,10 +267,10 @@ const required_clicks = 5
 
 const button_click_listener = () => {
 	clicks++;
-update_display();
-	if (clicks == required_clicks){
-this.jsPsych.finishTrial(trial_data);
-}
+    update_display();
+    if (clicks == required_clicks){
+        this.jsPsych.finishTrial(trial_data);
+    }
 }
 ```
 
@@ -308,7 +308,6 @@ var trial_data = {
 On next build, we'll see our `clicks` value on the data display when we end the trial. Now, we want the button press to actually update the value, or we'll only ever get that default 0. We can do that by returning to the `button_click_listener` function, accessing the `clicks` property on our trial_data object, and using that to store the `clicks` counter variable.
 
 ```javascript
-
 const button_click_listener = () => {
 	clicks++;
 update_display();
@@ -347,7 +346,6 @@ Let's review our parameters out of the box. The template starts with two arbitra
 Let's ignore `parameter_name2` for now and change `parameter_name1` to `required_clicks`. Since we'll only ever require an integer number of clicks, we can keep our type requirement as is. Let's also set our default in advance to 1.
 
 ```javascript
-
 parameters: {
 	required_clicks: {
 		type: ParameterType.INT,
@@ -358,7 +356,6 @@ parameter_name2: {
 		default: 0,
 	}
 }
-
 ```
 
 On next build, we will be able to just declare our desired `required_clicks` parameter from example.html. So will our hypothetical user!
