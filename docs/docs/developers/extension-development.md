@@ -1,3 +1,10 @@
+---
+title: Extension Development
+pageData:
+- migration: unchanged
+- sidebar: takes title
+---
+
 # Extension development
 
 ## Requirements for an extension

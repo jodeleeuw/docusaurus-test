@@ -1,3 +1,14 @@
+---
+sidebar_position: 13
+tags:
+- Package
+- Paradigm
+- Data
+pageData:
+- migration: unchanged
+- sidebar: default
+---
+
 # Eye Tracking
 
 jsPsych supports eye tracking through the [WebGazer](https://webgazer.cs.brown.edu/) library. WebGazer uses computer vision techniques to identify features of the participant's eyes via a webcam and predicts gaze location. The system is calibrated by having the participant click on or look at known locations on the screen. These locations are linked to eye features. Gaze location is predicted using regression.

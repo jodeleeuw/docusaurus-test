@@ -1,3 +1,10 @@
+---
+title: Plugin Development
+pageData:
+- migration: unchanged
+- sidebar: will rename
+---
+
 # Plugin development
 
 ## Requirements for a plugin

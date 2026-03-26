@@ -1,3 +1,13 @@
+---
+sidebar_position: 12
+tags:
+- Browser
+- Package
+pageData:
+- migration: unchanged
+- sidebar: default
+---
+
 # Fullscreen Experiments
 
 You can run your experiment in fullscreen mode by using the jspsych-fullscreen plugin.

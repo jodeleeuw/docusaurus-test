@@ -1,3 +1,13 @@
+---
+sidebar_position: 14
+tags:
+- Paradigm
+- Package
+pageData:
+- migration: unchanged
+- sidebar: default
+---
+
 # Building Surveys in jsPsych
 
 ## Choosing which jsPsych survey plugin to use

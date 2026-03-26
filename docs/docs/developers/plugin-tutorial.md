@@ -1,3 +1,10 @@
+---
+title: Plugin Development (New Tutorial)
+pageData:
+- migration: new
+- sidebar: will rename
+---
+
 # Plugin Development
 
 This tutorial will walk through plugin development for jspsych-contrib, using a very simple example. We'll go step-by-step through writing a plugin that records mindless clicking data from a given participant. This simple demonstration will highlight key open-science principles behind what makes a distributable plugin, including:

@@ -1,3 +1,12 @@
+---
+sidebar_position: 0
+tags:
+- Timeline
+pageData:
+- migration: unchanged
+- sidebar: default
+---
+
 # Creating an Experiment: The Timeline
 
 To create an experiment using jsPsych, you need to specify a timeline that describes the structure of the experiment. The timeline is an ordered set of trials. You must create the timeline before launching the experiment. Most of the code you will write for an experiment will be code to create the timeline. This page walks through the creation of timelines, including very basic examples and more advanced features.

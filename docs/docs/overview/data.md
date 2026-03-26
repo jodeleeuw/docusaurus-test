@@ -1,3 +1,16 @@
+---
+title: Data Storage, Aggregation, and Manipulation
+sidebar_position: 5
+tags:
+- Data
+- Method
+pageData:
+- migration: unchanged
+- sidebar: title
+
+## Unsure why this docs 'title' / sidebar 'label' defaults to the doc name/id; maybe it's because of a lack of first heading
+---
+
 ## Data in jsPsych: permanent and non-permanent data.
 
 There are two very different kinds of data storage: data stored in **memory** and data stored **permanently**. Data stored permanently exists even after the browser running jsPsych closes, typically in a database or in a file on a server. Data stored in memory exists only as long the browser window running jsPsych is open.

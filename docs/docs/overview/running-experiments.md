@@ -1,3 +1,12 @@
+---
+sidebar_position: 7
+tags:
+- Browser
+pageData:
+- migration: unchanged
+- sidebar: default
+---
+
 # Running Experiments
 
 You can run your jsPsych experiment:

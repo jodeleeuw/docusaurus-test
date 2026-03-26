@@ -1,4 +1,4 @@
-# List of Plugins
+# List of Extensions
 
 These are the extensions that are included in the jsPsych release. 
 

@@ -1,3 +1,13 @@
+---
+sidebar_position: 15
+tags:
+- Browser
+- Package
+pageData:
+- migration: unchanged
+- sidebar: default
+---
+
 # Exclude Participants Based on Browser Features
 *Changed in 7.1*
 

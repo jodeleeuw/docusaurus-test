@@ -1,3 +1,13 @@
+---
+sidebar_position: 6
+tags:
+- Data
+- Method
+pageData:
+- migration: unchanged
+- sidebar: default
+---
+
 # Simulation Modes
 *Added in 7.1*
 
