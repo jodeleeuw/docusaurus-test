@@ -41,6 +41,21 @@ const config: Config = {
       'classic',
       {
         docs: {
+          lastVersion: 'current',
+          versions: {
+            current: {
+              label: 'Current',
+              path: 'current'
+            },
+            '0.1': {
+              label: '0.1',
+              path: '0.1',
+            },
+            '0.0': {
+              label: '0.0',
+              path: '0.0',
+            },
+          },
           sidebarPath: './sidebars.ts',
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
@@ -85,11 +100,13 @@ const config: Config = {
         {
           type: 'docsVersionDropdown',
           versions: ['current', '0.1', '0.0'],
+          position: 'right',
         },
         { // Getting Started Tab
           // if a link is referenced in a sidebar, 
           // it will link to that page in the corresponding docSidebar type
-          to: 'docs/tutorials/hello-world',
+          type: 'docSidebar',
+          sidebarId: 'startingSidebar',
           position: 'left',
           label: 'Getting Started',
         },
@@ -112,7 +129,8 @@ const config: Config = {
           label: 'Community',
         },
         { // About Tab
-          to: '/docs/about/',
+          type: 'docSidebar',
+          sidebarId: 'aboutSidebar',
           position: 'left',
           label: 'About',
         },
