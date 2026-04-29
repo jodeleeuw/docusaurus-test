@@ -1,3 +1,12 @@
+---
+sidebar_position: 17
+tags:
+- Recruitment
+pageData:
+- migration: unchanged
+- sidebar: default
+---
+
 # Integrating with Prolific
 
 [Prolific](https://www.prolific.co/?ref=5JCXZPVU) is a participant recruitment service aimed at research. Integrating a jsPsych experiment with Prolific requires capturing the participant's ID and sending the participant to a completion URL at the end of the experiment.

@@ -1,3 +1,10 @@
+---
+title: Building the Documentation
+pageData:
+- migration: unchanged
+- sidebar: takes title
+---
+
 # Building the jsPsych documentation
 
 The documentation hosted at [https://www.jspsych.org](https://www.jspsych.org) is generated using [mkdocs](https://www.mkdocs.org/) and the [mkdocs-material theme](https://squidfunk.github.io/mkdocs-material/). The documentation files are located in the [`/docs` directory of the GitHub repository](https://github.com/jspsych/jsPsych/tree/main/docs). The documentation is written using markdown.

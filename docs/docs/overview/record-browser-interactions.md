@@ -1,3 +1,14 @@
+---
+title: Record Browser Interactions
+sidebar_position: 10
+tags:
+- Browser
+- Data
+pageData:
+- migration: unchanged
+- sidebar: title
+---
+
 # Record browser interactions
 
 Participants in an online experiment have the freedom to multitask while performing an experiment. jsPsych automatically records information about when the user clicks on a window that is not the experiment, and about when the user exits full screen mode if the experiment is running in full screen mode. This data is stored separately from the main experiment data, and can be accessed with [jsPsych.data.getInteractionData()](../reference/jspsych-data.md#jspsychdatagetinteractiondata).

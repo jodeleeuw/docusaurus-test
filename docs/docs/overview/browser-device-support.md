@@ -1,3 +1,12 @@
+---
+sidebar_position: 19
+tags:
+- Browser ## TODO: Fix Tags
+pageData:
+- migration: unchanged
+- sidebar: default
+---
+
 # Browser and Device Support
 
 ## Desktop and Laptop Browsers

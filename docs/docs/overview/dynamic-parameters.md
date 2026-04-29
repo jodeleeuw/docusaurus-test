@@ -1,3 +1,13 @@
+---
+title: Dynamic Parameters
+sidebar_position: 3
+tags:
+- Timeline
+pageData:
+- migration: unchanged
+- sidebar: title
+---
+
 # Dynamic parameters
 
 Most trial parameters can also be specified as functions. In a typical declaration of a jsPsych trial, parameters are known at the start of the experiment. This makes it impossible to alter the content of the trial based on the outcome of previous trials. However, **when functions are used as the parameter value, the function is evaluated right before the trial starts, and the return value of the function is used as the parameter value for that trial**. This enables dynamic updating of the parameter based on data that a participant has generated or any other information that you do not know in advance.

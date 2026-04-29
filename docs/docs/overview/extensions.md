@@ -1,3 +1,12 @@
+---
+sidebar_position: 2
+tags:
+- Package
+pageData:
+- migration: unchanged
+- sidebar: default
+---
+
 # Extensions
 
 In jsPsych, extensions allow one to extend the functionality of various plugins, giving individual plugins the ability to collect more data, display additional stimuli, and more. A canonical example of an extension is [eye tracking](../extensions/webgazer.md), which allow plugins to gather gaze data and add it to the their respective data objects. For a full list of extensions directly included in the jsPsych release, see [here](../extensions/list-of-extensions.md).

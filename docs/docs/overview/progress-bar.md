@@ -1,3 +1,13 @@
+---
+sidebar_position: 16
+tags:
+- Timeline
+- Method
+pageData:
+- migration: unchanged
+- sidebar: default
+---
+
 # Automatic Progress Bar
 
 jsPsych can show a progress bar at the top of the experiment page indicating the participant's overall completion progress. The progress bar is rendered outside the jsPsych display element, and it requires the `jspsych.css` file to be loaded on the page. As of version 6.0, the progress bar looks like this:

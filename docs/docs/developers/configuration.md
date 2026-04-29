@@ -1,3 +1,10 @@
+---
+title: Configuration
+pageData:
+- migration: unchanged
+- sidebar: takes title
+---
+
 # Configuring the jsPsych development environment
 
 ## Setup
