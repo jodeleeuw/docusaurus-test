@@ -102,7 +102,7 @@ const sidebars: SidebarsConfig = {
             {
               type: 'doc',
               id: 'developers/plugin-tutorial',
-              label: 'Demo Experiment: PluginMindlessClicking'
+              label: 'Demo Plugin: PluginMindlessClicking'
             }
           ]
         },
