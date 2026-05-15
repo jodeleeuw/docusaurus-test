@@ -1,0 +1,10 @@
+{
+  "position": 0,
+  "label": "Core",
+  "link": {
+        "type": "generated-index",
+        "title": "Core Modules",
+        "description": "Every module for general use with any jsPsych experiment",
+        "keywords": ["reference"]
+      }
+}

@@ -1,0 +1,10 @@
+{
+  "label": "Developers",
+  "position": 1,
+  "link": {
+        "type": "generated-index",
+        "title": "Guides for Developers",
+        "description": "Learn everything you need to develop a contribution for jsPsych",
+        "keywords": ["guides"]
+      }
+}

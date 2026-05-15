@@ -1,0 +1,10 @@
+{
+  "position": 2,
+  "label": "Extensions",
+  "link": {
+        "type": "generated-index",
+        "title": "Extension Packages",
+        "description": "Every extension distributed through jsPsych",
+        "keywords": ["reference"]
+      }
+}

@@ -1,0 +1,10 @@
+{
+  "label": "Feature Overview",
+  "position": 1,
+  "link": {
+        "type": "generated-index",
+        "title": "Feature Overview",
+        "description": "Every feature available for researchers to tailor their experiments",
+        "keywords": ["guides"]
+      }
+}

@@ -150,8 +150,8 @@ You'll need to download these image files.
 Right-click on each image below and select *Save image as...*. 
 Put the images in a folder called `img` in the experiment folder you created in part 1.
 
-![blue circle](../img/blue.png)
-![orange circle](../img/orange.png)
+![blue circle](../../../img/blue.png)
+![orange circle](../../../img/orange.png)
 
 Don't forget to add the trial to the timeline:
 
