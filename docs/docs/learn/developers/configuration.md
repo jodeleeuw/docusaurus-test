@@ -1,5 +1,6 @@
 ---
 title: Configuration
+sidebar_position: 0
 pageData:
 - migration: unchanged
 - sidebar: takes title

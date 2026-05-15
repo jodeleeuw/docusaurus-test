@@ -1,0 +1,10 @@
+{
+  "position": 0,
+  "label": "Researchers",
+  "link": {
+        "type": "generated-index",
+        "title": "Guides for Researchers",
+        "description": "Learn everything you need to design an experiment in jsPsych",
+        "keywords": ["guides"]
+      }
+}

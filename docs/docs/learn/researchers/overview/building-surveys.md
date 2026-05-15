@@ -476,11 +476,11 @@ Here's where to find the mobile emulator buttons in your browser's developer too
 
 **Chrome**
 
-![devtools-mobile-chrome](../img/survey_devtools_mobile_chrome.png)
+![devtools-mobile-chrome](../../../img/survey_devtools_mobile_chrome.png)
 
 **Firefox**
 
-![devtools-mobile-firefox](../img/survey_devtools_mobile_firefox.png)
+![devtools-mobile-firefox](../../../img/survey_devtools_mobile_firefox.png)
 
 To see what the `survey` trials look like on mobile devices, can view any of the `survey` plugin demos or example files. For instance, here's what the slider scale example looks like on laptop/desktop and mobile. Note a few key differences on mobile compared to laptop/desktop:
 
@@ -489,4 +489,4 @@ To see what the `survey` trials look like on mobile devices, can view any of the
 - The "Continue" button takes up the full width
 
 
-![survey-mobile-vs-desktop](../img/survey_mobile_vs_desktop.png)
+![survey-mobile-vs-desktop](../../../img/survey_mobile_vs_desktop.png)

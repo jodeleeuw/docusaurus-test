@@ -1,5 +1,6 @@
 ---
 title: Building the Documentation
+sidebar_position: 4
 pageData:
 - migration: unchanged
 - sidebar: takes title
