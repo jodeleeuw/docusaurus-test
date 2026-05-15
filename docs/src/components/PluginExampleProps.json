@@ -1,0 +1,15 @@
+{
+    "html-keyboard-response": {
+        "summary": "Displaying trial until participant gives a response",
+        "tabProps": [
+            {
+                "label": "Code",
+                "content": "var trial = {\n  type: 'html-keyboard-response',\n  stimulus: 'Press a key to continue.'\n}\n\njsPsych.run(trial);"
+            },
+            {
+                "label": "Demo",
+                "content": "../../demos/jspsych-html-keyboard-response-demo1.html"
+            }
+        ]
+    }
+}
