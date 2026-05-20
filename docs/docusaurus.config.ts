@@ -90,6 +90,11 @@ const config: Config = {
     colorMode: {
       respectPrefersColorScheme: true,
     },
+    algolia:{
+      appId: "G73E906FBW",
+      apiKey: "677a628d1fa8113d588d4e5c2ae9a83d",
+      indexName: 'docusaurus_jspsych'
+    },
     navbar: {
       title: 'jsPsych',
       logo: {
@@ -133,6 +138,10 @@ const config: Config = {
           sidebarId: 'about',
           position: 'left',
           label: 'About',
+        },
+        {
+          type: 'search',
+          position: 'right'
         },
         {
           href: 'https://github.com/jspsych/jspsych',
