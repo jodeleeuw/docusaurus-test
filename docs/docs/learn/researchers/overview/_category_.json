@@ -5,6 +5,7 @@
         "type": "generated-index",
         "title": "Feature Overview",
         "description": "Every feature available for researchers to tailor their experiments",
+        "slug": "/learn/researchers/overview",
         "keywords": ["guides"]
       }
 }

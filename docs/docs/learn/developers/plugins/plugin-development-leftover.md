@@ -1,8 +1,8 @@
 ---
-title: Plugin Development
+title: Plugin Development (leftover)
 pageData:
-- migration: unchanged
-- sidebar: will rename
+- migration: leftover
+- sidebar: takes title
 ---
 
 # Plugin development

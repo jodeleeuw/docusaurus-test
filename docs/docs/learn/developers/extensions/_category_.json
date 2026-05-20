@@ -5,6 +5,7 @@
     "type": "generated-index",
     "title": "Extension Development Guides",
     "description": "Resources for building your own extension packages",
+    "slug": "/learn/developers/extensions",
     "keywords": ["guides"]
   }
 }

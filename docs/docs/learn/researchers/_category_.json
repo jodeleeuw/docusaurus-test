@@ -4,7 +4,8 @@
   "link": {
         "type": "generated-index",
         "title": "Guides for Researchers",
-        "description": "Learn everything you need to design an experiment in jsPsych",
+        "description": "Learn how to design an experiment in jsPsych",
+        "slug": "/learn/researchers",
         "keywords": ["guides"]
       }
 }

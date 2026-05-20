@@ -5,6 +5,7 @@
         "type": "generated-index",
         "title": "Extension Packages",
         "description": "Every extension distributed through jsPsych",
+        "slug": "/reference/extensions",
         "keywords": ["reference"]
       }
 }

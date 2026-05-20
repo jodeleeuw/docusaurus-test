@@ -5,6 +5,7 @@
         "type": "generated-index",
         "title": "Guides for Developers",
         "description": "Learn everything you need to develop a contribution for jsPsych",
+        "slug": "/learn/developers",
         "keywords": ["guides"]
       }
 }

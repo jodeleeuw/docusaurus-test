@@ -1,5 +1,5 @@
 ---
-title: Demo Plugin (New Tutorial)
+title: "Demo Plugin: PluginMindlessClicking"
 pageData:
 - migration: new
 - sidebar: will rename

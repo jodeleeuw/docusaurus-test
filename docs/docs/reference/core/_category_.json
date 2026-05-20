@@ -5,6 +5,7 @@
         "type": "generated-index",
         "title": "Core Modules",
         "description": "Every module for general use with any jsPsych experiment",
+        "slug": "/reference/core",
         "keywords": ["reference"]
       }
 }
