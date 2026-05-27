@@ -1,6 +1,6 @@
 {
   "index_name": "docusaurus_jspsych",
-  "start_urls": ["http://host.docker.internal:3000/docusaurus-test/docs/current/category/core"],
+  "start_urls": ["https://vminojosa.github.io/docusaurus-test/docs/current/reference/core"],
   "selectors": {
     "lvl0": {
       "selector": ".menu__link--sublist.menu__link--active",
