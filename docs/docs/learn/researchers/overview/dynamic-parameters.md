@@ -61,7 +61,7 @@ timeline.push(trial, feedback);
 
 ```
 
-!!! note 
+:::note 
     When scoring a participant's response, the `jsPsych.pluginAPI.compareKeys` function is only needed to compare _keyboard_ responses. For other kinds of response types, such as button presses, you can compare the participant's response and correct response values directly, e.g.
     ```js
     if (data.response == 0)){
@@ -74,6 +74,7 @@ timeline.push(trial, feedback);
     ```js
     data.correct = data.response === data.correct_response;
     ```
+:::
 
 ### Randomizing a parameter value
 

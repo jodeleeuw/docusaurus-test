@@ -16,10 +16,11 @@ Wondering if jsPsych can be used for research that depends on accurate display t
 
 **Display timing** is somewhat less accurate in JavaScript than in standard experimental software that runs on a desktop. Desktop software can have closer integration with the graphics devices of the machine than JavaScript currently permits. If a one or two frame (17-33ms) difference in display timing matters for your experiment, then you'll want to be careful with JavaScript-based experiments. It is possible to achieve this level of control in JavaScript, but it often requires code that is more tailored to your experiment and some restrictions about which browsers can be used to run the experiment.
 
-!!! tip 
+:::tip 
     If you are hoping to run an experiment with the best timing that jsPsych can offer, we currently recommend using the [jspsych-psychophysics plugin](https://jspsychophysics.hes.kyushu-u.ac.jp/) developed by [Daiichiro Kuroki](https://twitter.com/kurokida1). 
 
     Kuroki, D. (2021). A new jsPsych plugin for psychophysics, providing accurate display duration and stimulus onset asynchrony. *Behavior Research Methods*, *53*, 301–310. [https://doi.org/10.3758/s13428-020-01445-w](https://doi.org/10.3758/s13428-020-01445-w)
+:::
 
 **Response time** measurements in jsPsych (and JavaScript in general) are comparable to those taken in standard lab software like Psychophysics Toolbox and E-Prime. Response times measured in JavaScript tend to be a little bit longer (10-40ms), but have similar variance.
 

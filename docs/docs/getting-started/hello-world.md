@@ -17,8 +17,9 @@ Which approach you choose will depend on what your goals are.
 
 ### Step 1: Create an HTML file
 
-!!! tip
+:::tip
     To edit jsPsych code you'll need a programming-friendly text editor. A great free option is [Visual Studio Code](https://code.visualstudio.com/) (Windows, OSX, Linux).
+:::
 
 Create a new file called `experiment.html`.
 
@@ -104,7 +105,7 @@ To initialize jsPsych we use the `initJsPsych()` function and assign the output 
 
 ### Step 4: Use a plugin to print a message
 
-For this demo we want to show some text on the screen. This is exactly what the [html-keyboard-response plugin]() is designed to do. To use the plugin, we need to load it with a `<script>` tag.
+For this demo we want to show some text on the screen. This is exactly what the [html-keyboard-response plugin](reference/plugins/html-keyboard-response.md) is designed to do. To use the plugin, we need to load it with a `<script>` tag.
 
 ```html hl_lines="6"
 <!DOCTYPE html>
@@ -122,7 +123,7 @@ For this demo we want to show some text on the screen. This is exactly what the 
 </html>
 ```
 
-Once the plugin is loaded we can create a trial using the plugin. To declare a trial that uses the `html-keyboard-response` plugin, we create an object with the property `type` equal to `jsPsychHtmlKeyboardResponse`. We can specify the other parameters of the plugin in the same object. Here we use the `stimulus` parameter to include a message. You can see the full set of parameters for each plugin on its [documentation page]().
+Once the plugin is loaded we can create a trial using the plugin. To declare a trial that uses the `html-keyboard-response` plugin, we create an object with the property `type` equal to `jsPsychHtmlKeyboardResponse`. We can specify the other parameters of the plugin in the same object. Here we use the `stimulus` parameter to include a message. You can see the full set of parameters for each plugin on its [documentation page](reference/plugins/html-keyboard-response.md#parameters).
 
 ```html hl_lines="13 14 15 16"
 <!DOCTYPE html>
@@ -147,7 +148,7 @@ Once the plugin is loaded we can create a trial using the plugin. To declare a t
 
 ### Step 5: Run the experiment
 
-Now that we have the trial defined we need to tell jsPsych to run an experiment consisting of this trial. This requires using the `jsPsych.run` function and passing in a [timeline](../overview/timeline.md). For a simple experiment like this one, the timeline is just an array containing the list of trials to run.
+Now that we have the trial defined we need to tell jsPsych to run an experiment consisting of this trial. This requires using the `jsPsych.run` function and passing in a [timeline](learn/researchers/overview/timeline.md). For a simple experiment like this one, the timeline is just an array containing the list of trials to run.
 
 ```html hl_lines="18"
 <!DOCTYPE html>
@@ -198,8 +199,9 @@ Create a folder on your computer to put the experiment files in. We'll call this
 
 ### Step 3: Create an HTML file
 
-!!! tip
+:::tip
     To edit jsPsych code you'll need a programming-friendly text editor. A great free option is [Visual Studio Code](https://code.visualstudio.com/) (Windows, OSX, Linux).
+:::
 
 Create a new file called `experiment.html` in the `MyExperiment` folder. The directory structure should look like this:
 
@@ -289,7 +291,7 @@ To initialize jsPsych we use the `initJsPsych()` function and assign the output 
 
 ### Step 6: Use a plugin to print a message
 
-For this demo we want to show some text on the screen. This is exactly what the [html-keyboard-response plugin]() is designed to do. To use the plugin, we need to load it with a `<script>` tag.
+For this demo we want to show some text on the screen. This is exactly what the [html-keyboard-response plugin](reference/plugins/html-keyboard-response.md) is designed to do. To use the plugin, we need to load it with a `<script>` tag.
 
 ```html hl_lines="6"
 <!DOCTYPE html>
@@ -307,7 +309,7 @@ For this demo we want to show some text on the screen. This is exactly what the 
 </html>
 ```
 
-Once the plugin is loaded we can create a trial using the plugin. To declare a trial that uses the `html-keyboard-response` plugin, we create an object with the property `type` equal to `jsPsychHtmlKeyboardResponse`. We can specify the other parameters of the plugin in the same object. Here we use the `stimulus` parameter to include a message. You can see the full set of parameters for each plugin on its [documentation page]().
+Once the plugin is loaded we can create a trial using the plugin. To declare a trial that uses the `html-keyboard-response` plugin, we create an object with the property `type` equal to `jsPsychHtmlKeyboardResponse`. We can specify the other parameters of the plugin in the same object. Here we use the `stimulus` parameter to include a message. You can see the full set of parameters for each plugin on its [documentation page](reference/plugins/html-keyboard-response.md#parameters).
 
 ```html hl_lines="13 14 15 16"
 <!DOCTYPE html>
@@ -332,7 +334,7 @@ Once the plugin is loaded we can create a trial using the plugin. To declare a t
 
 ### Step 7: Run the experiment
 
-Now that we have the trial defined we need to tell jsPsych to run an experiment consisting of this trial. This requires using the `jsPsych.run` function and passing in a [timeline](../overview/timeline.md). For a simple experiment like this one, the timeline is just an array containing the list of trials to run.
+Now that we have the trial defined we need to tell jsPsych to run an experiment consisting of this trial. This requires using the `jsPsych.run` function and passing in a [timeline](learn/researchers/overview/timeline.md). For a simple experiment like this one, the timeline is just an array containing the list of trials to run.
 
 ```html hl_lines="18"
 <!DOCTYPE html>
@@ -364,10 +366,11 @@ Once you've saved the file, open it in a browser. You should see "Hello world!" 
 If you are electing to use `npm` to install jsPsych we will assume that you already are familiar with Node.js and generally know what you are doing with web development.
 We will also assume that you are using a [webpack](https://webpack.js.org/) or a similar bundler.
 
-!!! info
+:::info
     You may want to check out the [jsPsych Builder](https://github.com/bjoluc/jspsych-builder) CLI utility.
     jsPsych Builder allows you to automate the experiment setup, spin up a development server, and transpile and bundle scripts and styles using webpack.
     Using jsPsych Builder will automate some of the steps in this tutorial, so if you prefer that option, you may want to switch to the getting started instructions on the jsPsych Builder GitHub page.
+:::
 
 ### Step 1: Install jspsych
 
@@ -379,7 +382,7 @@ Plugins and extensions are installed separately.
 ### Step 2: Import the `initJsPsych` function and create a new `JsPsych` instance
 
 We create a new instance of the `JsPsych` class by calling `initJsPsych`.
-The instance can optionally be configured via [a variety of options](../reference/jspsych.md#initjspsych), passed as an object to `initJsPsych`.
+The instance can optionally be configured via [a variety of options](reference/core/jspsych.md#initjspsych), passed as an object to `initJsPsych`.
 
 ```js
 import {initJsPsych} from 'jspsych';
@@ -413,7 +416,7 @@ Once the plugin is imported we can create a trial using the plugin.
 To declare a trial that uses the `html-keyboard-response` plugin, we create an object with the property `type` equal to `htmlKeyboardResponse`.
 We can specify the other parameters of the plugin in the same object.
 Here we use the `stimulus` parameter to include a message.
-You can see the full set of parameters for each plugin on its [documentation page]().
+You can see the full set of parameters for each plugin on its [documentation page](reference/plugins/html-keyboard-response.md).
 
 ```js
 import {initJsPsych} from 'jspsych';
@@ -429,7 +432,7 @@ const trial = {
 
 ### Step 6: Run
 
-Now that we have the trial defined we need to tell jsPsych to run an experiment consisting of this trial. This requires using the `jsPsych.run` function and passing in a [timeline](../overview/timeline.md). For a simple experiment like this one, the timeline is just an array containing the list of trials to run.
+Now that we have the trial defined we need to tell jsPsych to run an experiment consisting of this trial. This requires using the `jsPsych.run` function and passing in a [timeline](learn/researchers/overview/timeline.md). For a simple experiment like this one, the timeline is just an array containing the list of trials to run.
 
 ```js
 import {initJsPsych} from 'jspsych';

@@ -30,17 +30,18 @@ Instead, it can be found on the jsdelivr.net CDN at: "https://cdn.jsdelivr.net/g
 </head>
 ```
 
-!!! note 
+:::note 
   A copy of our forked `webgazer.js` file is also included in the jsPsych release, in the `/examples/js/webgazer` folder. 
-  So if you prefer to download and host all of your jsPsych files (i.e. [set-up option 2](../tutorials/hello-world.md#option-2-download-and-host-jspsych) in the Hello World tutorial), then another option is to load that file rather than using the jsdelivr link above. 
+  So if you prefer to download and host all of your jsPsych files (i.e. [set-up option 2](getting-started/hello-world.md#option-2-download-and-host-jspsych) in the Hello World tutorial), then another option is to load that file rather than using the jsdelivr link above. 
   Assuming you downloaded the release and copied the `webgazer.js` file into a folder called `js/webgazer` in your root project directory, then you would load the file like this:
   ```html
   <script src="js/webgazer/webgazer.js"></script>
   ```
+:::
 
 ### Load the jsPsych webgazer extension
 
-The [webgazer extension](../extensions/webgazer.md) adds functionality to jsPsych for interacting with webgazer. Load it like you would a plugin file.
+The [webgazer extension](reference/extensions/webgazer.md) adds functionality to jsPsych for interacting with webgazer. Load it like you would a plugin file.
 
 ```html
 <head>
@@ -168,10 +169,10 @@ If you have tips based on your own experience please consider sharing them on ou
 
 ## Example
 
-!!! tip 
+:::tip 
     Additional example experiments using WebGazer are available in the **/examples** folder of the jsPsych release. See `webgazer.html`, `webgazer_image.html`, and `webgazer_audio.html`. 
+:::
 
-!!! example
     Here's an example of putting all of the pieces above together. This example also shows how to use data from the validation to decide whether or not to recalibrate. You can <a href="../../demos/eye-tracking-with-webgazer.html" target="_blank">try this experiment here (opens in new tab)</a>.
 
     ```html

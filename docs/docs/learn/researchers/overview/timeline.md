@@ -13,7 +13,7 @@ To create an experiment using jsPsych, you need to specify a timeline that descr
 
 ## A single trial
 
-To create a trial, you need to create an object that describes the trial. The most important feature of this object is the `type` parameter. This tells jsPsych which plugin to use to run the trial. For example, if you want to use the [html-keyboard-response plugin]() to display a short message, the trial object would look like this:
+To create a trial, you need to create an object that describes the trial. The most important feature of this object is the `type` parameter. This tells jsPsych which plugin to use to run the trial. For example, if you want to use the [html-keyboard-response plugin](reference/plugins/html-keyboard-response.md) to display a short message, the trial object would look like this:
 
 ```javascript
 const trial = {
@@ -32,7 +32,7 @@ const timeline = [trial];
 jsPsych.run(timeline);
 ```
 
-To create and run a simple experiment like this complete the [hello world tutorial](../tutorials/hello-world.md).
+To create and run a simple experiment like this complete the [hello world tutorial](getting-started/hello-world.md).
 
 ## Multiple trials
 
@@ -104,7 +104,7 @@ A common pattern in behavioral experiments is to repeat the same procedure/task 
 
 One shortcut to implement this pattern is with the nested timeline approach described in the previous section, but this only works if all the trials use the same plugin type. Timeline variables are a more general solution. With timeline variables you define the procedure once (as a timeline) and specify a set of parameters and their values for each iteration through the timeline.
 
-What follows is an example of how to use timeline variables. The [simple reaction time tutorial](../tutorials/rt-task.md) also explains how to use timeline variables.
+What follows is an example of how to use timeline variables. The [simple reaction time tutorial](learn/researchers/tutorials/rt-task.md) also explains how to use timeline variables.
 
 Suppose we want to create an experiment where people see a set of faces. Perhaps this is a memory experiment and this is the phase of the experiment where the faces are being presented for the first time. In between each face, a fixation cross is displayed on the screen. Without timeline variables, we would need to add many trials to the timeline, alternating between trials showing the fixation cross and trials showing the face and name. This could be done efficiently using a loop or function to create the timeline, but timeline variables make it even easier - as well as adding extra features like sampling and randomization.
 
@@ -411,7 +411,7 @@ const face_name_procedure = {
 Any timeline can be looped using the `loop_function` option. 
 The loop function must be a function that evaluates to `true` if the timeline should repeat, and `false` if the timeline should end. 
 It receives a single parameter, named `data` by convention. 
-This parameter will be the [DataCollection object](../reference/jspsych-data.md#datacollection) with all of the data from the trials executed in the last iteration of the timeline. 
+This parameter will be the [DataCollection object](reference/core/jspsych-data.md#datacollection) with all of the data from the trials executed in the last iteration of the timeline. 
 The loop function will be evaluated after the timeline is completed.
 
 ```javascript
@@ -595,8 +595,9 @@ main_timeline.push(part1_trial, choice_trial);
 ```
 In the above implementation of `choice_trial`, choice 1 adds `english_branch` at the start of `main_timeline`, such that `main_timeline = [english_branch, part1_trial, choice_trial]`, but because the execution of `main_timeline` is past the first node at this point in runtime, the newly added `english_branch` will not be executed. Similarly, modifying `case '1'` in `choice_trial` to remove `part1_trial` will not change any behavior in the timeline.
 
-!!! danger
+:::danger
 In the case of a looping timeline, adding a timeline node at a point before the current node will cause the current node to be executed again; and removing a timeline node at a point before the current node will cause the next node to be skipped.
+:::
 
 ## Timeline start and finish functions
 

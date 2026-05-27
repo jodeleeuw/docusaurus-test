@@ -4,7 +4,7 @@ For questions about jsPsych, the preferred method of support is [GitHub Discussi
 
 If you have identified a problem with jsPsych, such as a bug in the code or an error in the documentation, please [open a new issue](https://github.com/jspsych/jsPsych/issues/new) on GitHub. 
 
-If you have a suggestion for fixing the problem, feel free to [contribute to the project](../developers/contributing.md)!
+If you have a suggestion for fixing the problem, feel free to [contribute to the project](learn/developers/contributing.md)!
 
 We also manage a Discord for jsPsych users and developers to get peer support for coding projects, in addition to feedback from our core maintenance team. We host virtual hackathons on the server as well! Feel free to join at our [#welcome-and-rules channel](https://discord.gg/YveQdPMbYz), where you'll get a breakdown of the server and how to find what you need.
 

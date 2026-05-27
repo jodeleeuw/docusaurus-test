@@ -98,9 +98,10 @@ timeline.push(survey_trial);
 
 That's it! The code above will create a valid survey.
 
-!!! note "JSON vs JavaScript objects"
+:::note JSON vs JavaScript objects
 
     [JSON (JavaScript Object Notation)](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON) is a text format for organizing data. It is very similar to a JavaScript object, but not exactly the same. The `survey_json` parameter takes a JSON-compatible JavaScript object, rather than a JSON string. We use the 'JSON' term for this parameter to make it clear that this parameter should not contain functions, and for consistency with SurveyJS documentation. To read more about JSON vs JavaScript objects, see e.g. [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON#javascript_and_json_differences) and [here](https://www.w3schools.com/js/js_json_intro.asp).
+:::
 
 
 #### Multiple pages
@@ -264,8 +265,9 @@ You can create `survey` trials entirely with JSON, entirely with a JavaScript fu
 - Dynamically modify the survey based on a participant's response from an earlier trial, or any other information you don't have access to before the survey trial begins.
 - Use custom functions as part of your survey's configuration. For instance, you might want to write a function that is triggered by a particular survey event, such as when response values change or when the survey is completed. You cannot put JavaScript functions into the `survey_json` object, so you will need to add them using the `survey_function` parameter.
 
-!!! note "Custom response validation"
+:::note Custom response validation
     There is a special case where you don't need to use the `survey_function` parameter for running a custom function, which is for adding custom response validation. The `survey` plugin includes a convenience parameter called `validation_function`, which allows you to add some custom JavaScript code to validate responses. Of course, you can also use the `survey_function` parameter for this, in which case you would set your custom function to run in response to the survey's [`onValidateQuestion`](https://surveyjs.io/form-library/documentation/api-reference/survey-data-model#onValidateQuestion) event.
+:::
 
 ### Creating dynamic surveys with JSON
 
@@ -315,8 +317,9 @@ const survey_function = (survey) => {
 }
 ```
 
-!!! tip "Use the 'matrix' question type for repeated response options"
+:::tip Use the 'matrix' question type for repeated response options
     The example above was used to illustrate how you can loop over information to programmatically construct a series of questions that are shown on the same page. But in cases where you have different question prompts that all use the same multiple choice options, you might prefer to use the the SurveyJS ["matrix" question type](https://surveyjs.io/form-library/examples/single-selection-matrix-table-question/vanillajs). This question type creates a table where each row is a question and each column is a response option. The table format is often used for Likert scales, satisfaction surveys, etc. You can even create a table that repeats a set of questions with different response types using the SurveyJS [multi-select matrix](https://surveyjs.io/form-library/examples/multi-select-matrix-question/vanillajs) ("matrixdropdown") question type.
+:::
 
 
 Rather than repeating a question format within the same trial, perhaps you want to use trial-level variables to generate separate `survey` trials, for instance in order to incorporate them into a larger repeating trial procedure. jsPsych's [timeline variables](timeline.md#timeline-variables) feature was designed to address this use case, but the use of timeline variables looks a little different with the `survey` plugin. This is because the various individual parameters that you might want to change across `survey` trials don't have their own plugin parameters - instead everything is nested within the `survey_json` parameter. Below are some examples showing how you can programmatically generate survey trials using a set of trial-level variables.
@@ -365,8 +368,9 @@ Rather than repeating a question format within the same trial, perhaps you want 
     };
     ```
 
-    !!! tip "Consider using a survey-* plugin for presenting a single question type"
+    :::tip Consider using a survey-* plugin for presenting a single question type
         The example above was created just to demonstrate how to combine the `survey` plugin and timeline variables. But if this were a real experiment, since each survey trial contains just one question, we'd be better off using one of the other survey-* plugins because the parameterization of those plugins works well with timeline variables. Of course, you may have other reasons for wanting to use the `survey` plugin in this type of trial procedure, for instance to take advantage of some its convenience features (e.g. different question types on the same page, response validation).
+    :::
 
 
 2. **Use jsPsych's [functions-as-parameters](https://www.jspsych.org/7.3/overview/dynamic-parameters/#dynamic-parameters) approach for the `survey_json` parameter.** With this approach, instead of defining a static JSON object for the value of `survey_json`, you would write a _function_ that returns the survey JSON object for that specific trial. 
@@ -476,11 +480,11 @@ Here's where to find the mobile emulator buttons in your browser's developer too
 
 **Chrome**
 
-![devtools-mobile-chrome](../../../img/survey_devtools_mobile_chrome.png)
+![devtools-mobile-chrome](/img/survey_devtools_mobile_chrome.png)
 
 **Firefox**
 
-![devtools-mobile-firefox](../../../img/survey_devtools_mobile_firefox.png)
+![devtools-mobile-firefox](/img/survey_devtools_mobile_firefox.png)
 
 To see what the `survey` trials look like on mobile devices, can view any of the `survey` plugin demos or example files. For instance, here's what the slider scale example looks like on laptop/desktop and mobile. Note a few key differences on mobile compared to laptop/desktop:
 
@@ -489,4 +493,4 @@ To see what the `survey` trials look like on mobile devices, can view any of the
 - The "Continue" button takes up the full width
 
 
-![survey-mobile-vs-desktop](../../../img/survey_mobile_vs_desktop.png)
+![survey-mobile-vs-desktop](/img/survey_mobile_vs_desktop.png)
