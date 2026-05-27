@@ -38,6 +38,7 @@ The docs will be viewable at `http://localhost:8000`.
 
 ## Updating the public docs site
 
-!!! warning "For core maintainers only" 
+:::warning "For core maintainers only" 
 
 After the documentation has been built locally (and therefore committed to your local `gh-pages` branch), you can update the live documentation site by switching to your `gh-pages` branch and pushing to the remote `gh-pages` branch.
+:::

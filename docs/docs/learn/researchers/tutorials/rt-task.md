@@ -1,3 +1,6 @@
+---
+sidebar_label: 'Demo Experiment: Simple Reaction Time Task'
+---
 # Summary of Tutorial Content
 
 This tutorial will work through the creation of a simple response time task. 
@@ -14,11 +17,15 @@ Despite this simple task, the tutorial covers many of the key features of jsPsyc
 
 ## Part 1: Creating a blank experiment
 
-Start by setting up a new HTML file with jsPsych, the html-keyboard-response plugin, and the jspsych.css file loaded. If you are unsure how to do this, follow the [Hello World tutorial](hello-world.md). You should have an HTML document that looks like this:
+Start by setting up a new HTML file with jsPsych, the html-keyboard-response plugin, and the jspsych.css file loaded. If you are unsure how to do this, follow the [Hello World tutorial](getting-started/hello-world.md). You should have an HTML document that looks like this:
 
-??? info "Info: Loading jsPsych"
-    This tutorial assumes that you are using the [CDN-based method of loading jsPsych](hello-world.md#option-1-using-cdn-hosted-scripts). 
-    If you are using another method then everything is the same except for how jsPsych is loaded.
+<details>
+  <summary><strong>Info: Loading jsPsych</strong></summary>
+
+This tutorial assumes that you are using the [CDN-based method of loading jsPsych](getting-started/hello-world.md#option-1-using-cdn-hosted-scripts). 
+If you are using another method then everything is the same except for how jsPsych is loaded.
+
+</details>
 
 ```html
 <!DOCTYPE html>
@@ -39,7 +46,7 @@ This will be our starting point for building the rest of the experiment.
 
 ## Part 2: Display welcome message
 
-First we have to initialize jsPsych. We can do this using the [`initJsPsych()` function](../reference/jspsych.md#initjspsych), and saving the result to a variable called `jsPsych`.
+First we have to initialize jsPsych. We can do this using the [`initJsPsych()` function](/reference/core/jspsych.md#initjspsych), and saving the result to a variable called `jsPsych`.
 
 ```javascript
 var jsPsych = initJsPsych();
@@ -54,10 +61,10 @@ We'll add trials to this array as we create them.
 var timeline = [];
 ```
 
-Let's greet the participant with a simple welcome message using the [html-keyboard-response]() plugin.
+Let's greet the participant with a simple welcome message using the [html-keyboard-response](reference/plugins/html-keyboard-response.md) plugin.
 
 First, we create a trial that uses the `html-keyboard-response` plugin and contains a simple string to show the participant. 
-As explained on the [plugins documentation page](../overview/plugins.md), the trial object must have a `type` parameter that tells jsPsych which plugin to use. 
+As explained on the [plugins documentation page](learn/researchers/overview/plugins.md), the trial object must have a `type` parameter that tells jsPsych which plugin to use. 
 The value of `type` is similar to the plugin name, but starts with `jsPsych` and is written in camel case rather than with dashes. 
 So to use the `html-keyboard-response` plugin, we need to write `jsPsychHtmlKeyboardResponse` as the trial type.
 
@@ -74,7 +81,7 @@ Next, we push the welcome trial to the timeline, which adds it to the end of the
 timeline.push(welcome);
 ```
 
-Finally, we tell jsPsych to run the experiment by calling the [jsPsych.run() function](../reference/jspsych.md#jspsychrun) and passing in the array that defines the experiment timeline.
+Finally, we tell jsPsych to run the experiment by calling the [jsPsych.run() function](reference/core/jspsych.md#jspsychrun) and passing in the array that defines the experiment timeline.
 
 ```javascript
 jsPsych.run(timeline);
@@ -142,16 +149,17 @@ var instructions = {
 };
 ```
 
-!!! tip
+:::tip
     In JavaScript there are three different ways to define a `string`. You can use single quotes `'`, double quotes `"`, or backticks `` ` ``. Using backticks has two advantages over the other approaches, especially when you are creating long strings with HTML. You can extend the `string` across multiple lines and you can use [template strings](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) to easily incorporate variables.
+:::
 
 Notice that the HTML includes `<img>` tags to display the images that the participant will be responding to. 
 You'll need to download these image files. 
 Right-click on each image below and select *Save image as...*. 
 Put the images in a folder called `img` in the experiment folder you created in part 1.
 
-![blue circle](../../../img/blue.png)
-![orange circle](../../../img/orange.png)
+![blue circle](/img/blue.png)
+![orange circle](/img/orange.png)
 
 Don't forget to add the trial to the timeline:
 
@@ -331,7 +339,7 @@ Whenever we use media elements (images, audio, or video) in an experiment it is 
 By preloading media we ask the participant's browser to download the media ahead of needing it, so that when we do need to display or play it there is no lag from needing to download it. 
 
 We are going to use the [preload plugin]() to preload the two images. 
-The [media preloading section](../overview/media-preloading.md) goes into a lot of detail about various options for preloading and different ways that you can use this plugin. 
+The [media preloading section](learn/researchers/overview/media-preloading.md) goes into a lot of detail about various options for preloading and different ways that you can use this plugin. 
 Here we are simply going to give the plugin a list of the files that we want to be preloaded.
 
 First we need to add the preload plugin to our `<head>` section.
@@ -616,7 +624,7 @@ var test_procedure = {
 
     For example, if a `timeline_variables` array contains one trial per stimulus, then the same stimulus could occur twice in a row (since it could be at the end of one repetition and the start of the next one), but it could not be repeated more than twice in a row, regardless of the number of `repetitions`.
 
-    If you want to repeat your `timeline_variables` array but randomize across all trials, you could use the `sample` parameter with the `fixed-repetitions` option: this will combine all the repeitions of your `timeline_variables` array into one larger array, and then randomize the whole thing. You can read more about the randomization, repetition, and sampling options for timeline variables in the [Timeline Variables documentation](../overview/timeline.md#timeline-variables).
+    If you want to repeat your `timeline_variables` array but randomize across all trials, you could use the `sample` parameter with the `fixed-repetitions` option: this will combine all the repeitions of your `timeline_variables` array into one larger array, and then randomize the whole thing. You can read more about the randomization, repetition, and sampling options for timeline variables in the [Timeline Variables documentation](learn/researchers/overview/timeline.md#timeline-variables).
 
 
 ??? example "The complete code so far"
@@ -716,7 +724,7 @@ var test_procedure = {
 
 One aspect of the experiment that could be improved is the duration of the fixation cross. As the experiment stands right now, the timing of the circles appearing is very predictable. We can change that by using a different value for the `trial_duration` parameter in the `fixation` trial for each trial. But how can we do that and keep the simple code structure we have now where we only have to define the fixation trial once? One option would be to add another timeline variable, like `"fixation_duration"` and use that to control the timing. But another option is to specify the `trial_duration` parameter as a function. If a parameter is a function, jsPsych will execute the function every time the trial runs. That means that if the function returns different results probabilistically, we can get a different parameter value every time the trial runs.
 
-To do that here, we'll use one of the built-in randomization methods in [jsPsych's randomization module](../reference/jspsych-randomization.md). `jsPsych.randomization.sampleWithoutReplacement()` takes an array of items to sample from and generates a new array of length *N* by sampling without replacement.
+To do that here, we'll use one of the built-in randomization methods in [jsPsych's randomization module](reference/core/jspsych-randomization.md). `jsPsych.randomization.sampleWithoutReplacement()` takes an array of items to sample from and generates a new array of length *N* by sampling without replacement.
 
 ```javascript
 var fixation = {
@@ -828,9 +836,9 @@ In the code above, we replaced the `trial_duration: 1000` parameter in `fixation
 
 ## Part 10: Displaying the data
 
-We have created a complete, if simple, experiment at this point, so let's take a look at the data being generated. jsPsych has a built-in [function called `jsPsych.data.displayData()`](../reference/jspsych-data.md#jspsychdatadisplaydata) that is useful for debugging your experiment. It will remove all of the information on the screen and replace it with the raw data collected so far. This isn't terribly useful when you are actually running an experiment, but it's nice for checking the data during development.
+We have created a complete, if simple, experiment at this point, so let's take a look at the data being generated. jsPsych has a built-in [function called `jsPsych.data.displayData()`](reference/core/jspsych-data.md#jspsychdatadisplaydata) that is useful for debugging your experiment. It will remove all of the information on the screen and replace it with the raw data collected so far. This isn't terribly useful when you are actually running an experiment, but it's nice for checking the data during development.
 
-We need the `displayData` function to execute when the experiment ends. One way to do this is to use the [`on_finish` callback function](../overview/events.md#on_finish-experiment). This function will automatically execute once all the trials in the experiment are finished. We can specify this function in the experiment settings when we initialize jsPsych with the `initJsPsych` method.
+We need the `displayData` function to execute when the experiment ends. One way to do this is to use the [`on_finish` callback function](learn/researchers/overview/events.md#on_finish-experiment). This function will automatically execute once all the trials in the experiment are finished. We can specify this function in the experiment settings when we initialize jsPsych with the `initJsPsych` method.
 
 ```javascript
 var jsPsych = initJsPsych({
@@ -1130,13 +1138,17 @@ var test = {
 
 The `data.response` value is a string representation of the key the participant pressed. We can compare this with the `data.correct_response` value, and assign this computed value to a new property `data.correct`.
 
-??? info "Info: The `compareKeys` function"
-    Here we are comparing the values of `data.response` and `data.correct_response` using a jsPsych function called [jsPsych.pluginAPI.compareKeys](../reference/jspsych-pluginAPI.md#comparekeys). We're using this function because it allows us to compare keys in either a _case sensitive_ or _case insensitive_ way, depending on the `case_sensitive_responses` parameter in the [experiment settings](../overview/experiment-options.md#choose-whether-you-want-keyboard-choicesresponses-to-be-case-sensitive). The participant's key response will be recorded in a case-sensitive way in the data (e.g. 'f' or 'F'), but in most cases, we don't care if their response corresponds to an upper or lower case letter (which is why the `case_sensitive_responses` experiment setting is `false` by default). Using the `jsPsych.pluginAPI.commpareKeys` function here means that the response will be scored correctly, even if the participant holds down Shift or has Caps Lock on. 
-    
-    This function is only relevant for keyboard responses; for other kinds of responses, such as button presses, you can simply compare the response and correct response values directly, e.g.
-    ```js
-    data.correct = data.response === data.correct_response;
-    ```
+<details>
+  <summary><strong>Info: The `compareKeys` function</strong></summary>
+
+Here we are comparing the values of `data.response` and `data.correct_response` using a jsPsych function called [jsPsych.pluginAPI.compareKeys](/reference/core/jspsych-pluginAPI.md#comparekeys). We're using this function because it allows us to compare keys in either a _case sensitive_ or _case insensitive_ way, depending on the `case_sensitive_responses` parameter in the [experiment settings](../overview/experiment-options.md#choose-whether-you-want-keyboard-choicesresponses-to-be-case-sensitive). The participant's key response will be recorded in a case-sensitive way in the data (e.g. 'f' or 'F'), but in most cases, we don't care if their response corresponds to an upper or lower case letter (which is why the `case_sensitive_responses` experiment setting is `false` by default). Using the `jsPsych.pluginAPI.commpareKeys` function here means that the response will be scored correctly, even if the participant holds down Shift or has Caps Lock on. 
+
+This function is only relevant for keyboard responses; for other kinds of responses, such as button presses, you can simply compare the response and correct response values directly, e.g.
+
+```js
+data.correct = data.response === data.correct_response;
+```
+</details>
 
 ??? example "The complete code so far"
 
@@ -1255,7 +1267,7 @@ jsPsych provides a limited set of analysis functions to allow you to calculate t
 We'll use the `html-keyboard-response` plugin. Because the text that we want to display changes based on the participant's performance in the experiment, we need to use a function for the `stimulus` parameter and return the desired text.
 
 ??? info "Info: Dynamic parameters"
-    Using a function as the value of a 'normal' parameter (i.e. a parameter that isn't usually a function) provides lots of flexibility in jsPsych experiments, because it allows you to dynamically change the parameter's value based on the participant's earlier responses, and any other information that you don't know before the experiment has started. For more information and examples, see the [dynamic parameter documentation page](../overview/dynamic-parameters.md).
+    Using a function as the value of a 'normal' parameter (i.e. a parameter that isn't usually a function) provides lots of flexibility in jsPsych experiments, because it allows you to dynamically change the parameter's value based on the participant's earlier responses, and any other information that you don't know before the experiment has started. For more information and examples, see the [dynamic parameter documentation page](learn/researchers/overview/dynamic-parameters.md).
 
 Here's what the code looks like, and a description follows below.
 
