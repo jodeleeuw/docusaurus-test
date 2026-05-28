@@ -91,8 +91,8 @@ const config: Config = {
       respectPrefersColorScheme: true,
     },
     algolia:{
-      appId: "G73E906FBW",
-      apiKey: "677a628d1fa8113d588d4e5c2ae9a83d",
+      appId: 'G73E906FBW',
+      apiKey: '677a628d1fa8113d588d4e5c2ae9a83d',
       indexName: 'docusaurus_jspsych'
     },
     navbar: {
