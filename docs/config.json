@@ -1,6 +1,14 @@
 {
   "index_name": "docusaurus_jspsych",
-  "start_urls": ["https://vminojosa.github.io/docusaurus-test/docs/current/reference/core"],
+  "start_urls": [
+    "https://vminojosa.github.io/docusaurus-test/docs/current/reference/core/",
+    "https://vminojosa.github.io/docusaurus-test/docs/current/reference/plugins/",
+    "https://vminojosa.github.io/docusaurus-test/docs/current/reference/extensions/",
+    "https://vminojosa.github.io/docusaurus-test/docs/current/learn/researchers",
+    "https://vminojosa.github.io/docusaurus-test/docs/current/learn/developers",
+    "https://vminojosa.github.io/docusaurus-test/docs/current/getting-started/hello-world",
+    "https://vminojosa.github.io/docusaurus-test/docs/current/community/support",
+    "https://vminojosa.github.io/docusaurus-test/docs/current/about/"],
   "selectors": {
     "lvl0": {
       "selector": ".menu__link--sublist.menu__link--active",
@@ -11,6 +19,7 @@
     "lvl2": "article h2",
     "lvl3": "article h3",
     "lvl4": "article h4",
-    "text": "article p, article li"
-  }
+    "text": "article p"
+  },
+  "min_indexed_level": 1
 }
