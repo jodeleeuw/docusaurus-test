@@ -93,7 +93,8 @@ const config: Config = {
     algolia:{
       appId: 'G73E906FBW',
       apiKey: '677a628d1fa8113d588d4e5c2ae9a83d',
-      indexName: 'docusaurus_jspsych'
+      indexName: 'docusaurus_jspsych',
+      contextualSearch: false,
     },
     navbar: {
       title: 'jsPsych',
