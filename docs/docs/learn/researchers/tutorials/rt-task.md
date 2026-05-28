@@ -1,4 +1,5 @@
 ---
+sidebar_position: 0
 sidebar_label: 'Demo Experiment: Simple Reaction Time Task'
 ---
 # Summary of Tutorial Content
@@ -88,38 +89,40 @@ jsPsych.run(timeline);
 ```
 After each step in the tutorial you can view the complete code up to that point by clicking on the expandable box below.
 
-??? example "The complete code so far"
-    ```html
-    <!DOCTYPE html>
-    <html>
-      <head>
-        <title>My experiment</title>
-        <script src="https://unpkg.com/jspsych@8.2.2"></script>
-        <script src="https://unpkg.com/@jspsych/plugin-html-keyboard-response@2.1.0"></script>
-        <link href="https://unpkg.com/jspsych@8.2.2/css/jspsych.css" rel="stylesheet" type="text/css" />
-      </head>
-      <body></body>
-      <script>
-        
-        /* initialize jsPsych */
-        var jsPsych = initJsPsych();
+<details>
+<summary><strong>The complete code so far</strong></summary>
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My experiment</title>
+    <script src="https://unpkg.com/jspsych@8.2.2"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-html-keyboard-response@2.1.0"></script>
+    <link href="https://unpkg.com/jspsych@8.2.2/css/jspsych.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body></body>
+  <script>
+    
+    /* initialize jsPsych */
+    var jsPsych = initJsPsych();
 
-        /* create timeline */
-        var timeline = [];
+    /* create timeline */
+    var timeline = [];
 
-        /* define welcome message trial */
-        var welcome = {
-          type: jsPsychHtmlKeyboardResponse,
-          stimulus: "Welcome to the experiment. Press any key to begin."
-        };
-        timeline.push(welcome);
+    /* define welcome message trial */
+    var welcome = {
+      type: jsPsychHtmlKeyboardResponse,
+      stimulus: "Welcome to the experiment. Press any key to begin."
+    };
+    timeline.push(welcome);
 
-        /* start the experiment */
-        jsPsych.run(timeline);
+    /* start the experiment */
+    jsPsych.run(timeline);
 
-      </script>
-    </html>
-    ```
+  </script>
+</html>
+```
+</details>
 
 ## Part 3: Show instructions
 
@@ -167,8 +170,8 @@ Don't forget to add the trial to the timeline:
 timeline.push(instructions);
 ```
 
-??? example "The complete code so far"
-
+<details>
+<summary><strong>The complete code so far</strong></summary>
     ```html
     <!DOCTYPE html>
     <html>
@@ -221,6 +224,7 @@ timeline.push(instructions);
       </script>
     </html>
     ```
+</details>
 
 ## Part 4: Displaying stimuli and getting responses
 
@@ -262,8 +266,8 @@ As usual, we need to add the trials to the timeline.
 timeline.push(blue_trial, orange_trial);
 ```
 
-??? example "The complete code so far"
-
+<details>
+<summary><strong>The complete code so far</strong></summary>
     ```html
     <!DOCTYPE html>
     <html>
@@ -332,6 +336,7 @@ timeline.push(blue_trial, orange_trial);
       </script>
     </html>
     ```
+</details>
 
 ## Part 5: Preloading media
 
@@ -371,8 +376,8 @@ As always, add the trial to the timeline.
 timeline.push(preload);
 ```
 
-??? example "The complete code so far"
-
+<details>
+<summary><strong>The complete code so far</strong></summary>
     ```html
     <!DOCTYPE html>
     <html>
@@ -448,6 +453,7 @@ timeline.push(preload);
       </script>
     </html>
     ```
+</details>
 
 ## Part 6: Timeline variables
 
@@ -504,8 +510,8 @@ timeline.push(test_procedure);
 
 What happens when the experiment reaches the test procedure? jsPsych will run the `test_procedure` timeline one time for each entry in the `test_stimuli` array (two times total, in this case). The first time through, jsPsych will substitute the timeline variables from the first array entry (blue image), and the second time through the second array entry will be used (orange image). Notice that the fixation trial occurs before both the orange and the blue circles, because the entire timeline of the `test_procedure` is repeated for each entry in the `timeline_variables` array.
 
-??? example "The complete code so far"
-
+<details>
+<summary><strong>The complete code so far</strong></summary>
     ```html
     <!DOCTYPE html>
     <html>
@@ -594,6 +600,7 @@ What happens when the experiment reaches the test procedure? jsPsych will run th
       </script>
     </html>
     ```
+</details>
 
 
 ## Part 7: Parameters for timelines with timeline variables
@@ -619,16 +626,18 @@ var test_procedure = {
 };
 ```
 
-??? info "Info: Randomizing timeline variables"
-    In a timeline variables procedure, when `randomize_order` is `true` and `repetitions` is greater than 1, the  trial order will be re-randomized on each repetition through the `timeline_variables` array. This means that there will be some constraints on the randomization of all trials in the procedure. 
+<details>
+  <summary><strong>Info: Randomizing timeline variables</strong></summary>
 
-    For example, if a `timeline_variables` array contains one trial per stimulus, then the same stimulus could occur twice in a row (since it could be at the end of one repetition and the start of the next one), but it could not be repeated more than twice in a row, regardless of the number of `repetitions`.
+In a timeline variables procedure, when `randomize_order` is `true` and `repetitions` is greater than 1, the  trial order will be re-randomized on each repetition through the `timeline_variables` array. This means that there will be some constraints on the randomization of all trials in the procedure. 
 
-    If you want to repeat your `timeline_variables` array but randomize across all trials, you could use the `sample` parameter with the `fixed-repetitions` option: this will combine all the repeitions of your `timeline_variables` array into one larger array, and then randomize the whole thing. You can read more about the randomization, repetition, and sampling options for timeline variables in the [Timeline Variables documentation](learn/researchers/overview/timeline.md#timeline-variables).
+For example, if a `timeline_variables` array contains one trial per stimulus, then the same stimulus could occur twice in a row (since it could be at the end of one repetition and the start of the next one), but it could not be repeated more than twice in a row, regardless of the number of `repetitions`.
 
+If you want to repeat your `timeline_variables` array but randomize across all trials, you could use the `sample` parameter with the `fixed-repetitions` option: this will combine all the repeitions of your `timeline_variables` array into one larger array, and then randomize the whole thing. You can read more about the randomization, repetition, and sampling options for timeline variables in the [Timeline Variables documentation](learn/researchers/overview/timeline.md#timeline-variables).
+</details>
 
-??? example "The complete code so far"
-
+<details>
+<summary><strong>The complete code so far</strong></summary>
     ```html
     <!DOCTYPE html>
     <html>
@@ -719,6 +728,7 @@ var test_procedure = {
       </script>
     </html>
     ```
+</details>
 
 ## Part 8: Using functions to generate parameters
 
@@ -739,8 +749,8 @@ var fixation = {
 
 In the code above, we replaced the `trial_duration: 1000` parameter in `fixation` with a function. Inside the function, we take a sample from the array `[250, 500, 750, 1000, 1250, 1500, 1750, 2000]` of size 1 (second parameter to `jsPsych.randomization.sampleWithoutReplacement`). The return value from calling `jsPsych.randomization.sampleWithoutReplacement` is an array of length 1, so we add the `[0]` selection at the end to get the value out of the array.
 
-??? example "The complete code so far"
-
+<details>
+<summary><strong>The complete code so far</strong></summary>
     ```html
     <!DOCTYPE html>
     <html>
@@ -833,6 +843,7 @@ In the code above, we replaced the `trial_duration: 1000` parameter in `fixation
       </script>
     </html>
     ```
+</details>
 
 ## Part 10: Displaying the data
 
@@ -848,8 +859,8 @@ var jsPsych = initJsPsych({
 });
 ```
 
-??? example "The complete code so far"
-
+<details>
+<summary><strong>The complete code so far</strong></summary>
     ```html
     <!DOCTYPE html>
     <html>
@@ -946,6 +957,7 @@ var jsPsych = initJsPsych({
       </script>
     </html>
     ```
+</details>
 
 ## Part 11: Tagging trials with additional data
 
@@ -1005,8 +1017,8 @@ var fixation = {
 };
 ```
 
-??? example "The complete code so far"
-
+<details>
+<summary><strong>The complete code so far</strong></summary>
     ```html
     <!DOCTYPE html>
     <html>
@@ -1110,6 +1122,7 @@ var fixation = {
       </script>
       </html>
     ```
+</details>
 
 ## Part 12: Manipulating data during the experiment
 
@@ -1150,8 +1163,8 @@ data.correct = data.response === data.correct_response;
 ```
 </details>
 
-??? example "The complete code so far"
-
+<details>
+<summary><strong>The complete code so far</strong></summary>
     ```html
     <!DOCTYPE html>
     <html>
@@ -1258,6 +1271,7 @@ data.correct = data.response === data.correct_response;
       </script>
     </html>
     ```
+</details>
 
 
 ## Part 13: Data aggregation
@@ -1266,8 +1280,11 @@ jsPsych provides a limited set of analysis functions to allow you to calculate t
 
 We'll use the `html-keyboard-response` plugin. Because the text that we want to display changes based on the participant's performance in the experiment, we need to use a function for the `stimulus` parameter and return the desired text.
 
-??? info "Info: Dynamic parameters"
-    Using a function as the value of a 'normal' parameter (i.e. a parameter that isn't usually a function) provides lots of flexibility in jsPsych experiments, because it allows you to dynamically change the parameter's value based on the participant's earlier responses, and any other information that you don't know before the experiment has started. For more information and examples, see the [dynamic parameter documentation page](learn/researchers/overview/dynamic-parameters.md).
+<details>
+<summary><strong>Info: Dynamic Parameters</strong></summary>
+
+Using a function as the value of a 'normal' parameter (i.e. a parameter that isn't usually a function) provides lots of flexibility in jsPsych experiments, because it allows you to dynamically change the parameter's value based on the participant's earlier responses, and any other information that you don't know before the experiment has started. For more information and examples, see the [dynamic parameter documentation page](learn/researchers/overview/dynamic-parameters.md).
+</details>
 
 Here's what the code looks like, and a description follows below.
 

@@ -61,11 +61,13 @@ const info = {
 }
 ```
 
-??? info "Automatic versioning with custom build environments"
+<details>
+<summary><strong>Info: Automatic versioning with custom build environments</strong></summary>
 
-    If you are using a custom build environment that imports its own `tsconfig.json` file that does not extend jsPsych's, and you want to use this automatic versioning syntax, you must add `"resolveJsonModule": true` to the config's `compilerOptions` object.
+If you are using a custom build environment that imports its own `tsconfig.json` file that does not extend jsPsych's, and you want to use this automatic versioning syntax, you must add `"resolveJsonModule": true` to the config's `compilerOptions` object.
 
 If you are not using a build environment that supports `import` and `package.json` (such as writing a plain JS file), you can manually enter the `version` as a string.
+</details>
 
 ```javascript
 const info = {
