@@ -1,11 +1,19 @@
 ---
-title: Plugin Development (leftover)
+title: Plugin Components
 pageData:
-- migration: leftover
-- sidebar: takes title
+- migration: unchanged
+- sidebar: will rename
 ---
 
-# Plugin development
+# Plugin components
+
+## Requirements for a plugin
+
+As of version 7.0, plugins are [JavaScript Classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes). A plugin must implement:
+
+* [A `constructor()`](#constructor) that accepts an instance of jsPsych.
+* [A `trial()` method](#trial) that accepts an `HTMLElement` as its first argument and an `object` of trial parameters as its second argument. There is an optional third argument to [handle the `on_load` event](#asynchronous-loading) in certain cirumstances. The `trial()` method should *either* invoke `jsPsych.finishTrial()` or should be an `async` function that returns a data object to [end the trial and save data](#save-data).
+* [A static `info` property](#static-info) on the class that contains an object describing the plugin's parameters, data generated, and version.
 
 ## Creating a new plugin
 
@@ -31,7 +39,8 @@ The plugin's `trial()` method is responsible for running a single trial. When th
 
 There are three parameters that are passed into the trial method. 
 
-...
+* `display_element` is the DOM element where jsPsych content is being rendered. This parameter will be an `HTMLElement`, and you can use it to modify the portion of the document that jsPsych controls.
+* `trial` is an object containing all of the parameters specified in the corresponding [TimelineNode](learn/researchers/overview/timeline.md).
 * `on_load` is an optional parameter that contains a callback function to invoke when `trial()` has completed its initial loading. See [handling the on_load event](#asynchronous-loading).
 
 The only requirement for the `trial` method is that it calls `jsPsych.finishTrial()` when it is done. This is how jsPsych knows to advance to the next trial in the experiment (or end the experiment if it is the last trial). The plugin can do whatever it needs to do before that point.
@@ -254,6 +263,20 @@ const info = {
 
 ## Plugin functionality
 
+Inside the `.trial()` method you can do pretty much anything that you want, including modifying the DOM, setting up event listeners, and making asynchronous requests. In this section we'll highlight a few common things that you might want to do as examples.
+
+### Changing the content of the display
+
+There are a few ways to change the content of the display. The `display_element` parameter of the trial method contains the `HTMLElement` for displaying jsPsych content, so you can use various JavaScript methods for interaction with the display element. A common one is to change the `innerHTML`. Here's an example of using `innerHTML` to display an image specified in the `trial` parameters.
+
+```javascript
+trial(display_element, trial){
+  let html_content = `<img src="${trial.image}"></img>`;
+  
+  display_element.innerHTML = html_content;
+}
+```
+
 ### Waiting for specified durations
 
 If you need to delay code execution for a fixed amount of time, we recommend using jsPsych's wrapper of the `setTimeout()` function, `jsPsych.pluginAPI.setTimeout()`. Any timeouts that are created using jsPsych's `setTimeout()` will be automatically cleared when the trial ends, which prevents one plugin from interfering with the timing of another plugin.
@@ -331,6 +354,23 @@ async trial(display_element, trial, on_load){
 
 ### Save data
 
+To write data to [jsPsych's data collection](reference/core/jspsych-data.md#datacollection) pass an object of data as the parameter to `jsPsych.finishTrial()`.
+
+```javascript
+constructor(jsPsych){
+  this.jsPsych = jsPsych;
+}
+
+trial(display_element, trial){
+  let data = {
+    correct: true,
+    rt: 350
+  }
+
+  this.jsPsych.finishTrial(data);
+}
+```
+
 As of version `8.0` you may also return the data object from the `trial()` method when the method is an `async` function. This is equivalent to calling `jsPsych.finishTrial(data)`.
 
 ```javascript
@@ -382,7 +422,7 @@ We plan to add a longer guide about simulation development in the future. For no
 
 ## Advice for writing plugins
 
-If you are developing a plugin with the aim of including it in the main jsPsych repository we encourage you to follow the [contribution guidelines](contributing.md#contributing-to-the-codebase). 
+If you are developing a plugin with the aim of including it in the main jsPsych repository we encourage you to follow the [contribution guidelines](learn/developers/contributing.md#contributing-to-the-codebase). 
 
 We also recommend that you make your plugin *as general as possible*. Consider using parameters to give the user of the plugin as many options for customization as possible. For example, if you have any text that displays in the plugin including things like button labels, implement the text as a parameter. This allows users running experiments in other languages to replace text values as needed.
 
