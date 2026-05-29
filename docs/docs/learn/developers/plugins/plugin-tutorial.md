@@ -105,7 +105,24 @@ Let's start by adding elements to `display_element` and manipulating the DOM.
 
 This section will go over how to update the webpage to display what we want to the participant.
 
-The first thing we need to do before anything is delete the `jsPsych.finishTrial()` call in the default template. We're only doing this for now so that we can see changes to the DOM, as we run new builds. Otherwise, the `trial()` execution ends as soon as the method is run. We’ll reintroduce this call later anyway, since it's required for a compliant plugin package.
+There are two things we need to do before anything else. First, let's go to `const info` and set the `default` value for each generic parameter to `0`, rather than `undefined`. This won't do anything to affect our plugin behavior as we develop it, but jsPsych needs a default parameter value to run the plugin at all. `parameter_name2` will throw a warning since it expects a string path to an image, but that won't break any of our builds going forward. 
+
+```javascript title="src/index.ts"
+parameters: {
+  /** Provide a clear description of parameter_name that could be used as documentation. */
+  parameter_name: {
+    type: ParameterType.INT,
+    default: 0,
+  },
+  /** Provide a clear description of parameter_name2 that could be used as documentation. */
+  parameter_name2: {
+    type: ParameterType.IMAGE,
+    default: 0,
+  },
+}
+```
+
+Second, we should delete the `jsPsych.finishTrial()` call in the default template. We're only doing this for now so that we can see changes to the DOM, as we run new builds. Otherwise, the `trial()` execution ends as soon as the method is run. We’ll reintroduce this call later anyway, since it's required for a compliant plugin package.
 
 Now that we’ve done that, let’s write something for the participant to interact with: a basic button in HTML. We'll wrap this button, and any other HTML elements we want presented to the user on loading the plugin instance, in a single `<div>` node, then assign that node to a single `const html`. We'll also assign a class to our button to style it with jsPsych’s built-in CSS:
 
@@ -271,7 +288,7 @@ As previously mentioned, the core jsPsych method for ending a plugin trial is `j
 
 We call `finishTrial()` by referencing the plugin's jsPsych instance as `this.jsPsych`. We'll have to do this whenever we invoke a jsPsych method. That means we'll have to tweak the way we define our listener function. To break `this.jsPsych` down, `this` references the latest execution context, while jsPsych references any jsPsych instance in that context. If we call `this.jsPsych` in the function as is, `this` will reference the function, whose scope won’t include jsPsych by default.
 
-To get around this, we can just declare `button_click_listener` as a constant that stores an arrow function. **[consider defining here what an arrow function is and why this works]** Once done, we can use `this` to reference plugin context `trial()`.
+To get around this, we can just declare `button_click_listener` as a constant that stores an arrow function. Now, `this` will reference the plugin context `trial()`.
 
 ```javascript title="src/index.ts"
 const button_click_listener = () => {
@@ -280,6 +297,9 @@ const button_click_listener = () => {
   this.jsPsych.finishTrial(trial_data);
 }
 ```
+:::note Arrow Functions
+The reason the above works as an arrow function, rather than a defined function, is because arrow functions are unbound to `this` and arguments. As a defined function, we would have to add `jsPsych` as its own argument to our `button_click_listener`, which makes are code less readable and flexible. For more on arrow functions, feel free to check out the [Mozilla docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
+:::
 
 On next build, we can click the button to immediately end the trial and see the default `data` object.
 
