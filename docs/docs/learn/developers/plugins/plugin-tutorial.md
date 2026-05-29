@@ -606,7 +606,7 @@ describe("my plugin", () => {
 })
 ```
 
-We can make a series of `expect()` assertions on these two constants to verify their behavior. We'll call `toBeTruthy` to check for truthy instances of the button and text. We'll also call `toBe()` to check that the button is a button element, the text is a paragraph element, and that the text and button are both presenting default strings.
+We can make a series of `expect()` assertions on these two constants to verify their behavior. We'll call `toBeTruthy` to check for truthy instances of the button and text. We'll also call `toBe()` to check that the button is a button element, the text is a paragraph element, and the text and button are both presenting their default strings. Note that, for the string checks, we've added a `.trim()` call to get rid of any whitespace between the string itself and their tags.
 
 ```javascript title="src/index.spec.ts"
 describe("my plugin", () => {
@@ -622,11 +622,11 @@ describe("my plugin", () => {
 
     expect(button).toBeTruthy();
     expect(button.tagName).toBe("BUTTON");
-    expect(button.innerHTML).toBe("Click Me!");
+    expect(button.innerHTML).trim().toBe("Click Me!");
 
     expect(text).toBeTruthy();
     expect(text.tagName).toBe("P");
-    expect(text.innerHTML).toBe(`Click the button 1 times to continue.`);
+    expect(text.innerHTML).trim().toBe(`Click the button 1 times to continue.`);
   });
 })
 ```
@@ -649,11 +649,11 @@ describe("my plugin", () => {
 
     expect(button).toBeTruthy();
     expect(button.tagName).toBe("BUTTON");
-    expect(button.innerHTML).toBe("Click Me!");
+    expect(button.innerHTML).trim().toBe("Click Me!");
 
     expect(text).toBeTruthy();
     expect(text.tagName).toBe("P");
-    expect(text.innerHTML).toBe(`Click the button 1 times to continue.`);
+    expect(text.innerHTML).trim().toBe(`Click the button 1 times to continue.`);
 
     button.click();
     expectFinished();
@@ -705,8 +705,8 @@ it("runs with user parameters", async () => {
   const button = displayElement.querySelector("#jspsych-mindless-clicking-button");
   const text = displayElement.querySelector("#jspsych-mindless-clicking-text");
 
-  expect(button.innerHTML).toBe(button_text_input);
-  expect(text.innerHTML).toBe(`Click the button ${required_clicks_input} times to continue.`)
+  expect(button.innerHTML).trim().toBe(button_text_input);
+  expect(text.innerHTML).trim().toBe(`Click the button ${required_clicks_input} times to continue.`)
 });
 ```
 As with our first test, we can run this in the terminal now that `it()` has an assertion. You can see that our plugin passes so far.
@@ -729,13 +729,13 @@ it("runs with user parameters", async () => {
   const button = displayElement.querySelector("#jspsych-mindless-clicking-button");
   const text = displayElement.querySelector("#jspsych-mindless-clicking-text");
 
-  expect(button.innerHTML).toBe(button_text_input);
-  expect(text.innerHTML).toBe(`Click the button ${required_clicks_input} times to continue.`)
+  expect(button.innerHTML).trim().toBe(button_text_input);
+  expect(text.innerHTML).trim().toBe(`Click the button ${required_clicks_input} times to continue.`)
 
   for (let clicks = 0; clicks < required_clicks_input; clicks++) {
     button.click();
-    expect(button.innerHTML).toBe(button_text_input);
-    expect(text.innerHTML).toBe(`Click the button ${required_clicks_input - clicks - 1} more times to continue.`)
+    expect(button.innerHTML).trim().toBe(button_text_input);
+    expect(text.innerHTML).trim().toBe(`Click the button ${required_clicks_input - clicks - 1} more times to continue.`)
   }
 });
 ```
@@ -763,8 +763,8 @@ it("runs with user parameters", async () => {
 
   for (let clicks = 0; clicks < required_clicks_input; clicks++) {
     button.click();
-    expect(button.innerHTML).toBe(button_text_input);
-    expect(text.innerHTML).toBe(`Click the button ${required_clicks_input - clicks - 1} more times to continue.`)
+    expect(button.innerHTML).trim().toBe(button_text_input);
+    expect(text.innerHTML).trim().toBe(`Click the button ${required_clicks_input - clicks - 1} more times to continue.`)
   }
 
   expectFinished();
