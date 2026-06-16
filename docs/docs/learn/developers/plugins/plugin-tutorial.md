@@ -538,7 +538,7 @@ Every meaningful Jest test going forward will follow this same structure. `descr
 
 ### jsPsych `test-utils`
 
-jsPsych also supplies a number of important helper functions for testing, found in `packages/test-utils`. You can find a complete reference for `test-utils` [here](this needs to be written out still lol).
+jsPsych also supplies a number of important helper functions for testing, found in `packages/test-utils`. You can find a complete reference for `test-utils` [here](reference/core/test-utils).
 
 For our purposes, we'll be repeatedly calling the `startTimeline()` method. `startTimeline()` runs an instance of our plugin and returns a Promise with one or more of the following:
 - `jsPsych`: The jsPsych instance
