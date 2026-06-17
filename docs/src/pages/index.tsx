@@ -1,60 +1,172 @@
 import type {ReactNode} from 'react';
-import clsx from 'clsx';
 import Link from '@docusaurus/Link';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import Layout from '@theme/Layout';
-import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import Heading from '@theme/Heading';
+import CorsiDemo from '@site/src/components/CorsiDemo';
 
 import styles from './index.module.css';
 
-function HomepageHeader() {
-  const {siteConfig} = useDocusaurusContext();
+const D = '/docs/current';
+
+function Hero() {
   return (
-    <header className={clsx(styles.heroBanner)}>
+    <header className={styles.hero}>
       <div className="container">
-        <Heading as="h1">
-          <img src="img/jspsych-logo.jpg" alt="jsPsych Logo" style={{maxWidth: '50%'}}/>
-        </Heading>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div className={styles.heroText}>
-          <p>
-            jsPsych is a JavaScript framework for creating behavioral experiments that run in a web browser.
-          </p>
-          <p>
-            Experiments in jsPsych are created using plugins.
-            Each plugin defines different kinds of events, like showing an image on the screen, and collects different kinds of data, 
-            like recording which key was pressed at which time. 
-            You can use the plugins that are included with jsPsych, use plugins that are developed by community members in the contrib repository, 
-            or create your own plugins.
-            By assembling different plugins together into a timeline, it is possible to create a wide range of experiments.
-          </p>
-          <p>
-            The page on timelines is a good place to start learning about jsPsych. 
-            From there, you might want to complete the hello world tutorial to learn how to set up a jsPsych experiment and 
-            the reaction time experiment tutorial to learn the core features of the framework.
-          </p>
-        </div>
-        <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
-            to="/docs/tutorials/hello-world">
-            Get Started With jsPsych - 5min ⏱️
-          </Link>
+        <div className={styles.heroGrid}>
+          <div className={styles.heroCopy}>
+            <img
+              className={styles.brandMark}
+              src={useBaseUrl('/img/jspsych-logo-no-text.svg')}
+              alt=""
+              aria-hidden="true"
+              width={72}
+              height={72}
+            />
+            <Heading as="h1" className={styles.title}>
+              Build behavioral experiments that run in the browser
+            </Heading>
+            <p className={styles.subtitle}>
+              jsPsych is a free, open-source JavaScript framework for the
+              behavioral sciences. Compose experiments from ready-made plugins,
+              run them in any browser, and collect precise response-time data.
+            </p>
+            <div className={styles.ctaRow}>
+              <Link
+                className={styles.primaryCta}
+                to={`${D}/getting-started/hello-world`}>
+                Get started
+              </Link>
+              <Link
+                className={styles.secondaryCta}
+                to={`${D}/reference/plugins`}>
+                Browse the plugins
+              </Link>
+            </div>
+            <p className={styles.metaline}>
+              Open source · Runs anywhere · Millisecond timing
+            </p>
+          </div>
+
+          <div className={styles.heroDemo}>
+            <CorsiDemo />
+          </div>
         </div>
       </div>
     </header>
   );
 }
 
+function Explainer() {
+  return (
+    <section className={styles.explain}>
+      <div className="container">
+        <div className={styles.explainInner}>
+          <Heading as="h2" className={styles.sectionTitle}>
+            One framework, assembled from plugins
+          </Heading>
+          <p className={styles.explainLead}>
+            Each <Link to={`${D}/learn/researchers/overview/plugins`}>plugin</Link>{' '}
+            defines one kind of event — show an image, play a sound, record
+            which key was pressed and when. You arrange plugins on a{' '}
+            <Link to={`${D}/learn/researchers/overview/timeline`}>timeline</Link>{' '}
+            to build a procedure. Use the plugins bundled with jsPsych, community
+            plugins from jspsych-contrib, or write your own.
+          </p>
+          <dl className={styles.concepts}>
+            <div className={styles.concept}>
+              <dt>Plugins</dt>
+              <dd>Prebuilt trial types for presenting stimuli and collecting responses.</dd>
+            </div>
+            <div className={styles.concept}>
+              <dt>Timeline</dt>
+              <dd>Order, loop, and randomize trials into a complete experiment.</dd>
+            </div>
+            <div className={styles.concept}>
+              <dt>Data</dt>
+              <dd>Every response and reaction time, recorded and ready to export.</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+type Path = {
+  to: string;
+  title: string;
+  desc: string;
+  feature?: boolean;
+};
+
+const PATHS: Path[] = [
+  {
+    to: `${D}/getting-started/hello-world`,
+    title: 'Get started',
+    desc: 'Install jsPsych and build your first experiment in about five minutes.',
+    feature: true,
+  },
+  {
+    to: `${D}/learn/researchers`,
+    title: 'Learn',
+    desc: 'Guides and step-by-step tutorials for designing and running studies.',
+  },
+  {
+    to: `${D}/reference/core`,
+    title: 'Reference',
+    desc: 'The complete API for the core library, plugins, and extensions.',
+  },
+  {
+    to: `${D}/reference/plugins`,
+    title: 'Plugin catalog',
+    desc: 'Every trial type you can drop straight onto a timeline.',
+  },
+  {
+    to: `${D}/community/support`,
+    title: 'Community',
+    desc: 'Get help, report issues, and contribute back to the project.',
+  },
+];
+
+function Paths() {
+  return (
+    <section className={styles.paths}>
+      <div className="container">
+        <Heading as="h2" className={styles.sectionTitle}>
+          Find your way around
+        </Heading>
+        <ul className={styles.pathList}>
+          {PATHS.map((p) => (
+            <li
+              key={p.to}
+              className={p.feature ? styles.pathFeature : styles.pathItem}>
+              <Link className={styles.pathLink} to={p.to}>
+                <span className={styles.pathTitle}>
+                  {p.title}
+                  <span aria-hidden="true" className={styles.pathArrow}>
+                    →
+                  </span>
+                </span>
+                <span className={styles.pathDesc}>{p.desc}</span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
 export default function Home(): ReactNode {
-  const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
-      <HomepageHeader />
+      title="Behavioral experiments in the browser"
+      description="jsPsych is a free, open-source JavaScript framework for building behavioral experiments that run in a web browser.">
+      <Hero />
       <main>
+        <Explainer />
+        <Paths />
       </main>
     </Layout>
   );

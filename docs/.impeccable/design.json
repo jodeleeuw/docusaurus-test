@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-06-16T00:00:00Z",
+  "title": "Design System: jsPsych Documentation",
+  "extensions": {
+    "colorMeta": {
+      "forest-green": { "role": "primary", "displayName": "jsPsych Forest Green", "canonical": "oklch(0.452 0.114 159)", "tonalRamp": ["#002e18", "#003d22", "#004c29", "#005831", "#00683e", "#007d4e", "#0d8d5b", "#7fceaa"] },
+      "primary-dark-mode": { "role": "primary", "displayName": "Primary-Dark Green", "canonical": "oklch(0.70 0.17 151)", "tonalRamp": ["#0c3f22", "#0f5b30", "#149249", "#20aa57", "#32bb64", "#49c772", "#61d383", "#7de198"] },
+      "signal-orange": { "role": "secondary", "displayName": "Signal Orange", "canonical": "oklch(0.72 0.165 55)", "tonalRamp": ["#5c3300", "#8a4d00", "#b55800", "#e3770e", "#f18426", "#ff9c3b", "#ffae5c", "#ffd0a3"] },
+      "coral-red": { "role": "tertiary", "displayName": "Coral Red", "canonical": "oklch(0.585 0.205 30)", "tonalRamp": ["#5e0d04", "#8a160a", "#b3160a", "#c0180a", "#db3424", "#ee4523", "#f0563f", "#ff9d8c"] },
+      "leaf-green": { "role": "tertiary", "displayName": "Leaf Green", "canonical": "oklch(0.62 0.17 150)", "tonalRamp": ["#063d20", "#08562c", "#03a14a", "#13b24b", "#2bbf6a", "#49c772", "#74e29a", "#a9eec4"] },
+      "paper": { "role": "neutral", "displayName": "Green-Tinted Paper", "canonical": "oklch(0.995 0.004 159)", "tonalRamp": ["#0d1310", "#1f2622", "#3a423d", "#5e6561", "#8b918c", "#c2c8c4", "#eef2ef", "#fbfefc"] },
+      "mist-surface": { "role": "neutral", "displayName": "Mist Surface", "canonical": "oklch(0.975 0.006 159)", "tonalRamp": ["#151b17", "#222a25", "#3a423d", "#5e6561", "#8b918c", "#c2c8c4", "#e7ede9", "#f4f8f5"] },
+      "pine-ink": { "role": "neutral", "displayName": "Pine Ink", "canonical": "oklch(0.26 0.012 159)", "tonalRamp": ["#0d1310", "#15201a", "#1f2622", "#3a423d", "#5e6561", "#8b918c", "#c2c8c4", "#eef2ef"] },
+      "forest-black": { "role": "neutral", "displayName": "Forest Black", "canonical": "oklch(0.18 0.012 159)", "tonalRamp": ["#0d1310", "#151b17", "#222a25", "#3a423d", "#5e6561", "#8b918c", "#c2c8c4", "#e5e9e6"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Homepage hero headline only." },
+      "heading": { "displayName": "Heading", "purpose": "Section and page titles (h1/h2)." },
+      "body": { "displayName": "Body", "purpose": "All prose; 65-75ch measure." },
+      "label": { "displayName": "Label", "purpose": "Small status chips like the 'Live experiment' badge." },
+      "code": { "displayName": "Code", "purpose": "Inline code and code blocks; ligatures disabled." }
+    },
+    "shadows": [
+      { "name": "panel-ambient", "value": "0 1px 2px rgba(0,0,0,0.04), 0 12px 28px -18px rgba(0,0,0,0.25)", "purpose": "Quiet lift under the live demo card; deepens in dark mode." },
+      { "name": "button-lift", "value": "0 8px 20px -10px var(--ifm-color-primary)", "purpose": "Colored low-opacity glow under primary CTAs only." }
+    ],
+    "motion": [
+      { "name": "ease-out-quart", "value": "cubic-bezier(0.22, 1, 0.36, 1)", "purpose": "Default easing for hover, focus, and the hero rise entrance." },
+      { "name": "duration-state", "value": "120ms", "purpose": "Hover/focus state changes." },
+      { "name": "duration-entrance", "value": "600ms", "purpose": "One-time hero rise (10px + fade)." }
+    ],
+    "breakpoints": [
+      { "name": "mobile-nav", "value": "996px" },
+      { "name": "hero-two-col", "value": "997px" },
+      { "name": "paths-two-col", "value": "768px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Primary CTA: forest-green fill, white text, colored ambient lift.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">Get started</a>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; font-family: 'Lexend Variable', system-ui, sans-serif; font-weight: 600; font-size: 1.02rem; color: #fff; background: #00683e; border: 1px solid #00683e; border-radius: 8px; padding: 0.8rem 1.6rem; text-decoration: none; box-shadow: 0 10px 24px -12px #00683e; transition: background 130ms cubic-bezier(0.22,1,0.36,1), transform 130ms cubic-bezier(0.22,1,0.36,1); } .ds-btn-primary:hover { background: #006037; transform: translateY(-2px); } .ds-btn-primary:focus-visible { outline: 2px solid #f18426; outline-offset: 2px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Lower-emphasis action: transparent fill, green text, hairline border.",
+      "html": "<a class=\"ds-btn-secondary\" href=\"#\">Browse the plugins</a>",
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; font-family: 'Lexend Variable', system-ui, sans-serif; font-weight: 600; font-size: 1.02rem; color: #00683e; background: transparent; border: 1px solid #d4ddd7; border-radius: 8px; padding: 0.8rem 1.6rem; text-decoration: none; transition: border-color 130ms ease, background 130ms ease; } .ds-btn-secondary:hover { border-color: #00683e; background: #eef5f0; } .ds-btn-secondary:focus-visible { outline: 2px solid #f18426; outline-offset: 2px; }"
+    },
+    {
+      "name": "Live Experiment Badge",
+      "kind": "chip",
+      "refersTo": "label",
+      "description": "Signature status chip: pulsing coral dot + green label on the demo panel.",
+      "html": "<span class=\"ds-live-badge\"><span class=\"ds-live-dot\"></span>Live experiment</span>",
+      "css": ".ds-live-badge { display: inline-flex; align-items: center; gap: 0.45rem; font-family: 'Lexend Variable', system-ui, sans-serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.01em; color: #00683e; background: rgba(0,104,62,0.08); border-radius: 999px; padding: 0.2rem 0.6rem 0.2rem 0.55rem; } .ds-live-dot { width: 7px; height: 7px; border-radius: 50%; background: #db3424; box-shadow: 0 0 0 0 rgba(219,52,36,0.55); animation: ds-pulse 2s ease-out infinite; } @keyframes ds-pulse { 0% { box-shadow: 0 0 0 0 rgba(219,52,36,0.55); } 70%,100% { box-shadow: 0 0 0 6px transparent; } }"
+    },
+    {
+      "name": "Demo Panel",
+      "kind": "card",
+      "refersTo": "demo-panel",
+      "description": "Elevated surface card that houses the live jsPsych experiment.",
+      "html": "<figure class=\"ds-panel\"><span class=\"ds-panel-title\">The Corsi block test</span><p class=\"ds-panel-lead\">Watch the sequence, then tap the blocks back in order.</p></figure>",
+      "css": ".ds-panel { margin: 0; padding: 1.75rem; background: #f4f8f5; border: 1px solid #e1e8e3; border-radius: 16px; box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 12px 28px -18px rgba(0,0,0,0.25); } .ds-panel-title { display: block; font-family: 'Lexend Variable', system-ui, sans-serif; font-weight: 600; font-size: 1.5rem; letter-spacing: -0.01em; color: #15201a; } .ds-panel-lead { margin: 0.4rem 0 0; font-family: 'Lexend Variable', system-ui, sans-serif; font-size: 0.95rem; color: #5e6561; }"
+    },
+    {
+      "name": "Directory Link Row",
+      "kind": "nav",
+      "refersTo": "navbar",
+      "description": "Ecosystem 'Find your way around' link: bold green title with orange arrow, muted descriptor, hairline divider.",
+      "html": "<a class=\"ds-path\" href=\"#\"><span class=\"ds-path-title\">Reference<span class=\"ds-path-arrow\">→</span></span><span class=\"ds-path-desc\">The complete API for the core library, plugins, and extensions.</span></a>",
+      "css": ".ds-path { display: flex; flex-direction: column; gap: 0.3rem; padding: 1.15rem 0; border-bottom: 1px solid #e1e8e3; text-decoration: none; } .ds-path-title { display: inline-flex; align-items: center; gap: 0.4rem; font-family: 'Lexend Variable', system-ui, sans-serif; font-weight: 700; font-size: 1.15rem; color: #15201a; transition: color 120ms ease; } .ds-path-arrow { color: #f18426; transition: transform 160ms cubic-bezier(0.22,1,0.36,1); } .ds-path:hover .ds-path-title { color: #00683e; } .ds-path:hover .ds-path-arrow { transform: translateX(4px); } .ds-path-desc { font-family: 'Lexend Variable', system-ui, sans-serif; font-size: 0.95rem; color: #5e6561; }"
+    },
+    {
+      "name": "Inline Code",
+      "kind": "custom",
+      "refersTo": "code",
+      "description": "Inline code token: JetBrains Mono on a green-tinted surface.",
+      "html": "<code class=\"ds-code\">initJsPsych()</code>",
+      "css": ".ds-code { font-family: 'JetBrains Mono Variable', ui-monospace, Menlo, monospace; font-size: 0.95em; font-variant-ligatures: none; background: #eef5f0; color: #1f2622; padding: 0.1em 0.4em; border-radius: 6px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Open Workbench",
+    "overview": "jsPsych is open-source software for building behavioral experiments, and its documentation should feel like the workbench where those experiments get built: a well-lit, well-organized surface where the tools are within reach and the work itself is on display. The signature move is showing, not telling - the homepage runs a real jsPsych experiment in front of you rather than describing one. Every surface is content-first and quietly confident: the framework's identity (forest green, leaf green, orange, coral) supplies the warmth while the layout gets out of the way. The personality is scientific and approachable, and the site is a hub for an entire ecosystem of packages, so coherence across many surfaces matters more than per-page flourish. Restraint is the discipline: one green carries the brand, orange is a rare accent, and generous whitespace plus a reading-tuned typeface (Lexend) do the heavy lifting.",
+    "keyCharacteristics": [
+      "Live, runnable demos as first-class content - show, don't tell.",
+      "One forest-green brand voice; orange as a <=10% accent, never decoration.",
+      "Reading-tuned humanist type (Lexend) + clear monospace (JetBrains Mono) for code.",
+      "Green-tinted neutrals, never warm cream; near-black-with-a-pine-tint in dark mode.",
+      "WCAG 2.1 AA throughout; meaning never rests on color alone (red/green safe)."
+    ],
+    "rules": [
+      { "name": "The One-Green Rule", "body": "Forest green is the only color that carries structure. If a second hue is doing structural work on a screen, one of them is wrong.", "section": "colors" },
+      { "name": "The Orange-Is-Rare Rule", "body": "Orange appears on <=10% of any screen - accents, focus, selection, one flourish. Its scarcity is the point.", "section": "colors" },
+      { "name": "The No-Cream Rule", "body": "Neutrals tint toward the brand green, never toward warm beige/sand/parchment. Warmth comes from the orange accent and the type.", "section": "colors" },
+      { "name": "The Color-Is-Never-Alone Rule", "body": "Status, feedback, and diffs must always carry an icon, label, or shape in addition to color. Color-blind readers must lose nothing.", "section": "colors" },
+      { "name": "The Tighten-Only-Large Rule", "body": "Negative letter-spacing applies only to display/h1/h2. Body and small headings keep default tracking.", "section": "typography" },
+      { "name": "The Depth-From-Tone Rule", "body": "In dark mode, elevation is lightness, never shadow. Step the surface tone instead of adding a drop shadow.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do let forest green carry the brand and reserve Signal Orange for accents, focus rings, selection, and one flourish - <=10% of any screen.",
+      "Do keep body text at Pine Ink / Moonlit Ink (15:1 / 14:1) and never let secondary text go lighter than Slate Sage (#5e6561, 6:1).",
+      "Do tint neutrals toward the brand green; carry warmth in the accent and type.",
+      "Do pair every status/feedback/diff color with an icon, label, or shape - the palette leans red/green.",
+      "Do lead with a runnable demo or real code where you'd otherwise write a paragraph.",
+      "Do cap prose at 65-75ch and disable ligatures in code so exact characters read true.",
+      "Do convey depth in dark mode by stepping surface lightness, not by adding shadows."
+    ],
+    "donts": [
+      "Don't ship the generic Docusaurus default look - uncustomized green/blue, default footer, stock template cards.",
+      "Don't drift corporate / SaaS-y: no gradient heroes, marketing buzzwords, or enterprise-cold polish.",
+      "Don't make surfaces cluttered or busy - no rainbow of admonitions, no decoration competing with content.",
+      "Don't go sterile or intimidating with cold walls of reference-only text.",
+      "Don't use a warm cream/sand/beige background, or token names like --paper/--cream; neutrals lean green.",
+      "Don't use border-left/border-right greater than 1px as a colored accent stripe.",
+      "Don't use gradient text, decorative glassmorphism, or hard 2014-style drop shadows.",
+      "Don't color orange as body text; use Signal Orange Ink (#b55800) only when orange text is unavoidable."
+    ]
+  }
+}

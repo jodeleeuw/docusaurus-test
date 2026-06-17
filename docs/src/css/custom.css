@@ -1,36 +1,252 @@
 /**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
+ * Global styles. The classic template bundles Infima; this file rebrands
+ * Infima's tokens to the jsPsych identity (the logo palette) and threads the
+ * brand orange through interactive accents.
+ *
+ * Brand source — jspsych/logo-assets `jspsych-logo-no-text.svg`:
+ *   deep green  #006838   bright green #13b24b
+ *   orange      #f78f1e   coral-red    #ee4523
+ *
+ * Palette built in OKLCH for perceptual evenness, emitted as hex for the
+ * broadest browser support. Strategy: Restrained (product register) — green
+ * primary carries the brand, orange is the ≤10% accent, semantics reuse the
+ * logo hues. All text pairings verified ≥4.5:1 (AA) in both color modes.
  */
 
-/* You can override the default Infima variables here. */
+/* ============================================================
+   TYPOGRAPHY (both modes) — Lexend for text, JetBrains Mono for code.
+   Self-hosted variable fonts; see src/fonts.ts. Lexend is a humanist sans
+   tuned from reading-proficiency research; its rounded forms echo the
+   jsPsych wordmark. Fallbacks are close UI-sans / mono stacks so the swap
+   from font-display:swap stays subtle.
+   ============================================================ */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
+  --ifm-font-family-base: 'Lexend Variable', system-ui, -apple-system,
+    'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --ifm-font-family-monospace: 'JetBrains Mono Variable', ui-monospace,
+    SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
+
+  --ifm-font-weight-semibold: 600;
+  --ifm-heading-font-weight: 600;
+  --ifm-heading-line-height: 1.2;
+  --ifm-line-height-base: 1.7;
+}
+
+/* Lexend runs a touch wide; tighten only the larger headings so letters knit
+   together without cramping. Body and small headings keep default tracking. */
+h1,
+h2,
+.markdown h1,
+.markdown h2 {
+  letter-spacing: -0.018em;
+}
+
+/* Exact characters matter when researchers read code — no code ligatures. */
+code,
+kbd,
+pre,
+.prism-code {
+  font-variant-ligatures: none;
+  font-feature-settings: 'liga' 0, 'calt' 0;
+}
+
+/* ============================================================
+   LIGHT MODE
+   ============================================================ */
+:root {
+  /* Primary — jsPsych deep green. Base 6.9:1 on white (links + buttons). */
+  --ifm-color-primary: #00683e;
+  --ifm-color-primary-dark: #006037;
+  --ifm-color-primary-darker: #005831;
+  --ifm-color-primary-darkest: #004c29;
+  --ifm-color-primary-light: #007447;
+  --ifm-color-primary-lighter: #007d4e;
+  --ifm-color-primary-lightest: #0d8d5b;
+
+  /* Secondary brand accent — logo orange. Carries warmth on hover, focus,
+     and selection. --orange-ink clears 4.5:1 on white for any orange text. */
+  --jspsych-orange: #f18426;
+  --jspsych-orange-bright: #ffae5c;
+  --jspsych-orange-dark: #e3770e;
+  --jspsych-orange-ink: #b55800;
+  --jspsych-coral: #ee4523;
+
+  /* Tinted neutrals — a whisper of the brand green (chroma ~0.006), never warm
+     cream. Body text 15:1, secondary text 6:1 — no washed-gray. */
+  --ifm-background-color: #fbfefc;
+  --ifm-background-surface-color: #f4f8f5;
+  --ifm-color-content: #1f2622;
+  --ifm-color-content-secondary: #5e6561;
+  --ifm-heading-color: #15201a;
+
+  /* Semantic — logo hues. Each Docusaurus admonition pairs an icon with its
+     color, so meaning never rests on hue alone (color-blind safe). */
+  --ifm-color-success: #03a14a;
+  --ifm-color-success-dark: #008a37;
+  --ifm-color-success-contrast-background: #e6fae9;
+  --ifm-color-success-contrast-foreground: #00622d;
+
+  --ifm-color-danger: #db3424;
+  --ifm-color-danger-dark: #d02e1e;
+  --ifm-color-danger-contrast-background: #ffede8;
+  --ifm-color-danger-contrast-foreground: #b3160a;
+
+  --ifm-color-warning: #f18426;
+  --ifm-color-warning-dark: #e3770e;
+  --ifm-color-warning-contrast-background: #fff1e3;
+  --ifm-color-warning-contrast-foreground: #8a4d00;
+
+  --ifm-color-info: #328bb0;
+  --ifm-color-info-dark: #2983a8;
+  --ifm-color-info-contrast-background: #e3f4fb;
+  --ifm-color-info-contrast-foreground: #0e5f7d;
+
+  /* Inline code — green-tinted surface so code reads as part of the system. */
   --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --ifm-code-background: #eef5f0;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 104, 62, 0.1);
+
+  /* Navbar — blends into the page background; brand is carried by the colored
+     logo and the orange active underline, not a saturated bar. */
+  --ifm-navbar-background-color: var(--ifm-background-color);
+  --ifm-navbar-link-hover-color: var(--ifm-color-primary);
+}
+
+/* ============================================================
+   DARK MODE — depth from surface lightness, brighter accents
+   ============================================================ */
+[data-theme='dark'] {
+  /* Primary — brightened green so links clear ~7:1 on the near-black bg. */
+  --ifm-color-primary: #32bb64;
+  --ifm-color-primary-dark: #20aa57;
+  --ifm-color-primary-darker: #18a050;
+  --ifm-color-primary-darkest: #149249;
+  --ifm-color-primary-light: #49c772;
+  --ifm-color-primary-lighter: #61d383;
+  --ifm-color-primary-lightest: #7de198;
+
+  --jspsych-orange: #ff9c3b;
+  --jspsych-orange-bright: #ffb866;
+  --jspsych-orange-dark: #f18426;
+  --jspsych-orange-ink: #ffb866;
+  --jspsych-coral: #f0563f;
+
+  /* Brand-tinted near-black, not pure gray. Body text 14:1, secondary 7:1. */
+  --ifm-background-color: #0d1310;
+  --ifm-background-surface-color: #151b17;
+  --ifm-color-content: #e5e9e6;
+  --ifm-color-content-secondary: #a0a7a2;
+  --ifm-heading-color: #f2f5f3;
+
+  --ifm-color-success: #2bbf6a;
+  --ifm-color-success-dark: #20aa57;
+  --ifm-color-success-contrast-background: #0e2a1a;
+  --ifm-color-success-contrast-foreground: #74e29a;
+
+  --ifm-color-danger: #f0563f;
+  --ifm-color-danger-dark: #db3424;
+  --ifm-color-danger-contrast-background: #2e1512;
+  --ifm-color-danger-contrast-foreground: #ff9d8c;
+
+  --ifm-color-warning: #ff9c3b;
+  --ifm-color-warning-dark: #f18426;
+  --ifm-color-warning-contrast-background: #2c1d0c;
+  --ifm-color-warning-contrast-foreground: #ffc285;
+
+  --ifm-color-info: #4ba6cc;
+  --ifm-color-info-dark: #328bb0;
+  --ifm-color-info-contrast-background: #0e2530;
+  --ifm-color-info-contrast-foreground: #8fd0e8;
+
+  --ifm-code-background: #1b2620;
+  --docusaurus-highlighted-code-line-bg: rgba(125, 225, 152, 0.12);
+
+  --ifm-navbar-background-color: var(--ifm-background-color);
+  --ifm-navbar-link-hover-color: var(--ifm-color-primary);
+}
+
+/* ============================================================
+   Brand accents — the orange thread + interaction polish
+   ============================================================ */
+
+/* Logo lifts on hover; honor reduced-motion. */
+.navbar__logo {
+  transition: transform 160ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 .navbar__logo:hover {
   transform: scale(1.05);
 }
-.navbar__item:hover {
-  color: rgb(255, 218, 149);
+
+/* Bolder navbar (product register: amplify clarity + accent, not drama).
+   Links carry more weight, and an animated orange underline turns the brand
+   accent into a confident wayfinding signal on hover and the active page. */
+.navbar__link {
+  position: relative;
+  font-weight: 600;
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
-[data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+.navbar__link::after {
+  content: '';
+  position: absolute;
+  left: var(--ifm-navbar-item-padding-horizontal, 0.75rem);
+  right: var(--ifm-navbar-item-padding-horizontal, 0.75rem);
+  bottom: 0.35rem;
+  height: 2px;
+  border-radius: 2px;
+  background-color: var(--jspsych-orange-bright);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 200ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.navbar__link:hover::after,
+.navbar__link--active::after {
+  transform: scaleX(1);
+}
+
+/* Stronger brand lockup: a tighter, heavier wordmark and a touch more logo. */
+.navbar__title {
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: -0.015em;
+}
+.navbar__logo {
+  height: 2.1rem;
+}
+
+/* The navbar blends into the page; a hairline base edge defines it as content
+   scrolls underneath — no heavy bar shadow. Both color modes. */
+.navbar {
+  box-shadow: none;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+/* Active page reads in brand green, alongside the persistent orange underline. */
+.navbar__link--active {
+  color: var(--ifm-color-primary);
+}
+
+/* Text selection in the brand orange, not the browser default blue. */
+::selection {
+  background-color: rgba(241, 132, 38, 0.24);
+}
+[data-theme='dark'] ::selection {
+  background-color: rgba(255, 156, 59, 0.28);
+}
+
+/* Keyboard-visible focus rings in brand orange, so they never blend into the
+   green primary controls. */
+:focus-visible {
+  outline: 2px solid var(--jspsych-orange);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navbar__logo {
+    transition: none;
+  }
+  /* Underline still appears on hover/active — it just snaps instead of sliding. */
+  .navbar__link::after {
+    transition: none;
+  }
 }

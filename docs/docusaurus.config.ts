@@ -28,6 +28,9 @@ const config: Config = {
 
   onBrokenLinks: 'warn',
 
+  // Self-hosted brand webfonts (Lexend + JetBrains Mono). See src/fonts.ts.
+  clientModules: ['./src/fonts.ts'],
+
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".
@@ -100,7 +103,7 @@ const config: Config = {
       title: 'jsPsych',
       logo: {
         alt: 'jsPsych Logo',
-        src: 'img/jspsych-logo-no-text-mono.svg',
+        src: 'img/jspsych-logo-no-text.svg',
       },
       items: [
         {
@@ -150,25 +153,41 @@ const config: Config = {
           position: 'right',
         },
       ],
-      style: 'primary', // Not sure what the default stylings are, but they're probably using infima
     },
     footer: {
       style: 'dark',
       links: [
         {
+          title: 'Docs',
+          items: [
+            {
+              label: 'Get Started',
+              to: '/docs/current/getting-started/hello-world',
+            },
+            {
+              label: 'Reference',
+              to: '/docs/current/reference/core',
+            },
+            {
+              label: 'Plugin Catalog',
+              to: '/docs/current/reference/plugins',
+            },
+          ],
+        },
+        {
           title: 'Community',
           items: [
             {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+              label: 'Support',
+              to: '/docs/current/community/support',
             },
             {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
+              label: 'GitHub Discussions',
+              href: 'https://github.com/jspsych/jspsych/discussions',
             },
             {
-              label: 'X',
-              href: 'https://x.com/docusaurus',
+              label: 'Contribute',
+              href: 'https://github.com/jspsych/jspsych-contrib',
             },
           ],
         },
@@ -181,12 +200,12 @@ const config: Config = {
             },
             {
               label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              href: 'https://github.com/jspsych/jspsych',
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} jsPsych contributors. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,

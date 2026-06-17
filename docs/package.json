@@ -18,8 +18,12 @@
     "@docusaurus/core": "3.9.2",
     "@docusaurus/plugin-client-redirects": "^3.10.0",
     "@docusaurus/preset-classic": "3.9.2",
+    "@fontsource-variable/jetbrains-mono": "^5.2.8",
+    "@fontsource-variable/lexend": "^5.2.11",
+    "@jspsych-contrib/plugin-corsi-blocks": "^2.0.0",
     "@mdx-js/react": "^3.0.0",
     "clsx": "^2.0.0",
+    "jspsych": "^8.2.3",
     "prism-react-renderer": "^2.3.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
