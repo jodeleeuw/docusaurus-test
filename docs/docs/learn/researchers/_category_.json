@@ -1,11 +1,9 @@
 {
   "position": 0,
   "label": "Researchers",
+  "description": "Learn how to design an experiment in jsPsych",
   "link": {
-        "type": "generated-index",
-        "title": "Guides for Researchers",
-        "description": "Learn how to design an experiment in jsPsych",
-        "slug": "/learn/researchers",
-        "keywords": ["guides"]
-      }
+    "type": "doc",
+    "id": "learn/researchers/index"
+  }
 }

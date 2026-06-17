@@ -1,7 +1,11 @@
 {
   "label": "Support",
+  "description": "Where to get help, report issues, and connect with the jsPsych community",
   "position": 8,
   "link": {
-    "type": "generated-index"
+    "type": "generated-index",
+    "title": "Support",
+    "description": "Where to get help, report issues, and connect with the jsPsych community",
+    "slug": "/support"
   }
 }

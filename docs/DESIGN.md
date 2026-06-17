@@ -190,6 +190,10 @@ Components are **calm and legible**: quiet surfaces that recede so the documenta
 - **States:** The active page and hover both show a brand-green link color plus an animated **Signal Orange** underline (2px) that slides in from the left — the navbar's signature wayfinding accent. Logo lifts 1.05× on hover. Both motions are suppressed under reduced motion (the underline snaps instead of sliding).
 - **The Blend-Not-Bar Rule.** The navbar never reintroduces a saturated background bar. If it needs more presence, add it through type weight, the colored logo, or the orange underline — never by filling the bar with color.
 
+### Footer
+- **Style:** A compact dark anchor in both color modes — the brand's **deep-pine** surface (`#151b17`, never Infima's stock bluish-gray), with a hairline top edge to separate it from the page. Light headings, muted-light links, links hover to bright green (`#49c772`).
+- **The Dark-Anchor Rule.** The footer is a deliberate dark bookend even in light mode; unlike the navbar it does not blend. Keep it tight (1.25rem vertical padding) and brand-toned, never the default gray.
+
 ### Live Experiment Panel (signature component)
 The homepage hero's defining element: a surface card running a real jsPsych Corsi-blocks experiment. A "Live experiment" label-chip with a pulsing coral status dot, a Lexend title, the interactive stage (theme-aware block colors read from CSS custom properties — orange highlight, green/coral feedback), and a results card that surfaces the actual data jsPsych recorded (a tap-time table). This is the "show, don't tell" principle made literal; treat it as the brand's hero, not a decoration.
 

@@ -1,11 +1,14 @@
 {
   "label": "Tutorials",
+  "description": "Step-by-step tutorials and demos for building an experiment from scratch",
   "position": 0,
   "link": {
-        "type": "generated-index",
-        "title": "Tutorials",
-        "description": "Step-by-step tutorials and demos for building an experiment from scratch",
-        "slug": "/learn/researchers/tutorials",
-        "keywords": ["guides"]
-      }
+    "type": "generated-index",
+    "title": "Tutorials",
+    "description": "Step-by-step tutorials and demos for building an experiment from scratch",
+    "slug": "/learn/researchers/tutorials",
+    "keywords": [
+      "guides"
+    ]
+  }
 }

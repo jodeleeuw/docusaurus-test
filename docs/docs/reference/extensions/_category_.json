@@ -1,11 +1,14 @@
 {
   "position": 2,
   "label": "Extensions",
+  "description": "Every extension distributed through jsPsych",
   "link": {
-        "type": "generated-index",
-        "title": "Extension Packages",
-        "description": "Every extension distributed through jsPsych",
-        "slug": "/reference/extensions",
-        "keywords": ["reference"]
-      }
+    "type": "generated-index",
+    "title": "Extension Packages",
+    "description": "Every extension distributed through jsPsych",
+    "slug": "/reference/extensions",
+    "keywords": [
+      "reference"
+    ]
+  }
 }
