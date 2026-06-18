@@ -1,15 +1,14 @@
 {
     "html-keyboard-response": {
-        "summary": "Displaying trial until participant gives a response",
-        "tabProps": [
-            {
-                "label": "Code",
-                "content": "var trial = {\n  type: 'html-keyboard-response',\n  stimulus: 'Press a key to continue.'\n}\n\njsPsych.run(trial);"
-            },
-            {
-                "label": "Demo",
-                "content": "../../demos/jspsych-html-keyboard-response-demo1.html"
-            }
-        ]
+        "response": {
+            "summary": "Displaying a trial until the participant responds",
+            "dependencies": ["@jspsych/plugin-html-keyboard-response@2.1.0"],
+            "code": "const trial = {\n  type: jsPsychHtmlKeyboardResponse,\n  stimulus: '<p style=\"font-size:48px; color:green;\">BLUE</p>',\n  choices: ['r', 'g', 'b'],\n  prompt: '<p>Is the ink color (r)ed, (g)reen, or (b)lue?</p>'\n};\n\nconst timeline = [trial];"
+        },
+        "fixation": {
+            "summary": "Showing a 1 second fixation cross; no response allowed",
+            "dependencies": ["@jspsych/plugin-html-keyboard-response@2.1.0"],
+            "code": "const trial = {\n  type: jsPsychHtmlKeyboardResponse,\n  stimulus: '<p style=\"font-size:48px;\">+</p>',\n  choices: 'NO_KEYS',\n  trial_duration: 1000\n};\n\nconst timeline = [trial];"
+        }
     }
 }

@@ -1,7 +1,4 @@
-import { PluginExample } from '@site/src/components/PluginExample'
-import Props from '@site/src/components/PluginExampleProps'
+import PluginExample from '@site/src/components/PluginExample'
+import examples from '@site/src/components/PluginExampleProps'
 
-<PluginExample
-    summary={Props["html-keyboard-response"].summary}
-    tabProps={Props["html-keyboard-response"].tabProps}
-/>
+<PluginExample {...examples["html-keyboard-response"].response} />
