@@ -1,9 +1,9 @@
 import type {ReactNode} from 'react';
 import Link from '@docusaurus/Link';
-import useBaseUrl from '@docusaurus/useBaseUrl';
 import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
-import CorsiDemo from '@site/src/components/CorsiDemo';
+import ExperimentDemo from '@site/src/components/ExperimentDemo';
+import HeroBrain from '@site/src/components/HeroBrain';
 
 import styles from './index.module.css';
 
@@ -12,17 +12,10 @@ const D = '/docs/current';
 function Hero() {
   return (
     <header className={styles.hero}>
+      <HeroBrain />
       <div className="container">
         <div className={styles.heroGrid}>
           <div className={styles.heroCopy}>
-            <img
-              className={styles.brandMark}
-              src={useBaseUrl('/img/jspsych-logo-no-text.svg')}
-              alt=""
-              aria-hidden="true"
-              width={72}
-              height={72}
-            />
             <Heading as="h1" className={styles.title}>
               Build behavioral experiments that run in the browser
             </Heading>
@@ -49,7 +42,7 @@ function Hero() {
           </div>
 
           <div className={styles.heroDemo}>
-            <CorsiDemo />
+            <ExperimentDemo />
           </div>
         </div>
       </div>

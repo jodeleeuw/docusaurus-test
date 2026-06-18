@@ -120,17 +120,29 @@ dots.forEach((o, i) => {
   o.dur = Math.round(380 + 220 * rand());         // flash duration 380–600ms
 });
 
-const body = dots.map((o) => {
+const body = dots.map((o, i) => {
   const style = o.fires
     ? `{ fill: '${o.fill}', ['--fd']: '${o.delay}ms', ['--fs']: '${o.scale}', ['--fdur']: '${o.dur}ms', ['--g']: '${o.fill}' } as React.CSSProperties`
     : `{ fill: '${o.fill}' }`;
   const cls = o.fires ? 'clsx(styles.dot, styles.fires)' : 'styles.dot';
   return (
     `      <g transform="translate(${o.tx},${o.ty})">\n` +
-    `        <path className={${cls}} style={${style}} d="${o.d}" />\n` +
+    `        <path data-i="${i}" className={${cls}} style={${style}} d="${o.d}" />\n` +
     `      </g>`
   );
 }).join('\n');
+
+// Runtime firing data: the neighbour graph + dot centres + tuning constants, so
+// HeroBrain can re-run the cascade from a RANDOM seed on a timer (the navbar
+// uses the baked .fires hover chain instead). Sets → arrays for serialisation;
+// coords rounded to keep the generated module small.
+const graph = {
+  nodes: dots.map((o) => [Math.round(o.sx * 100) / 100, Math.round(o.sy * 100) / 100]),
+  adj: adj.map((s) => [...s]),
+  window: WINDOW,
+  dropBase: DROP_BASE,
+  dropSlope: DROP_SLOPE,
+};
 
 const out = `import React from 'react';
 import clsx from 'clsx';
@@ -151,6 +163,10 @@ import styles from './styles.module.css';
  *   --g    : its own fill, reused as the glow color when it fires
  * Dots without styles.fires never animate. Pure CSS, triggered by
  * .navbar__brand:hover (see styles.module.css).
+ *
+ * Each dot also carries data-i (its index). BRAIN_GRAPH (exported below) holds
+ * the neighbour graph + dot centres so HeroBrain can replay the cascade from a
+ * random seed on a timer, via the data-fire trigger in styles.module.css.
  */
 export default function JspsychBrain({
   className,
@@ -169,6 +185,13 @@ ${body}
     </svg>
   );
 }
+
+/**
+ * Neighbour graph + dot centres + tuning constants for runtime propagation.
+ * nodes[i] = [x, y] screen centre of dot i; adj[i] = indices of i's neighbours.
+ * Consumed by HeroBrain to ignite a fresh chain from a random seed each pulse.
+ */
+export const BRAIN_GRAPH = ${JSON.stringify(graph)} as const;
 `;
 writeFileSync(OUT, out);
 const degrees = adj.map((s) => s.size);

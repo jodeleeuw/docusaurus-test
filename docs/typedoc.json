@@ -1,0 +1,20 @@
+{
+  "$schema": "https://typedoc-plugin-markdown.org/schema.json",
+  "entryPoints": [
+    "../packages/jspsych/src/modules/utils.ts",
+    "../packages/jspsych/src/modules/randomization.ts",
+    "../packages/jspsych/src/modules/turk.ts"
+  ],
+  "tsconfig": "../packages/jspsych/tsconfig.json",
+  "plugin": ["typedoc-plugin-markdown", "./typedoc/jspsych-markdown.mjs"],
+  "out": ".typedoc-out",
+  "readme": "none",
+  "hideGenerator": true,
+  "outputFileStrategy": "modules",
+  "parametersFormat": "table",
+  "hideBreadcrumbs": true,
+  "hidePageHeader": true,
+  "hideGroupHeadings": true,
+  "useCodeBlocks": true,
+  "sourceLinkTemplate": "https://github.com/jspsych/jsPsych/blob/main/{path}#L{line}"
+}

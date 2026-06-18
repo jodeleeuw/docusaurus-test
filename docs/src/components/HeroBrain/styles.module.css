@@ -1,0 +1,41 @@
+/* Large dot-brain watermark behind the hero. Sized bigger than its slot and
+   nudged off-centre so the hero's `overflow: hidden` crops it at the edges.
+   Kept faint so it reads as ambient texture, not a competing focal element —
+   the periodic synapse pulses are what catch the eye. */
+.bg {
+  position: absolute;
+  z-index: 0;
+  bottom: 0;
+  left: 0;
+  width: clamp(860px, 140%, 1720px);
+  height: clamp(860px, 140%, 1720px);
+  /* Pushed down (bottom crops it) and biased left, but big enough that its
+     right side reaches under the experiment block. */
+  transform: translate(-22%, 28%);
+  pointer-events: none;
+  opacity: 0.1;
+}
+
+[data-theme='dark'] .bg {
+  opacity: 0.17;
+}
+
+/* Fill the square watermark box (JspsychBrain's own .brain is height:100%). */
+.brain {
+  height: 100%;
+  width: 100%;
+}
+
+/* On narrow screens the brain would swamp the stacked copy; pull it up behind
+   the headline and lighten it further so text stays comfortably readable. */
+@media (max-width: 996px) {
+  .bg {
+    bottom: auto;
+    top: 0;
+    transform: translate(-50%, -18%);
+    opacity: 0.06;
+  }
+  [data-theme='dark'] .bg {
+    opacity: 0.12;
+  }
+}

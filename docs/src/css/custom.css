@@ -298,3 +298,52 @@ article .card p.text--truncate {
     margin-bottom: 0;
   }
 }
+
+/* ============================================================
+   Generated API reference — the collapsible "TypeScript
+   signature and types" block. Docusaurus styles native
+   <details> as a blue alert--info admonition, which fights the
+   green theme and pulls the eye away from the example above.
+   Mute it: green-tinted surface, hairline border (no blue, no
+   side-stripe), smaller type, so the technical specs recede.
+   ============================================================ */
+details.api-types {
+  --ifm-alert-background-color: var(--ifm-background-surface-color);
+  --ifm-alert-background-color-highlight: transparent;
+  --ifm-alert-foreground-color: var(--ifm-color-content-secondary);
+  --ifm-alert-border-color: var(--ifm-color-emphasis-200);
+  /* Keep the disclosure arrow (and open-state separator) clearly visible and
+     on-theme even though the summary text is muted — green reads as "clickable"
+     in this theme. */
+  --docusaurus-details-decoration-color: var(--ifm-color-primary);
+  --docusaurus-details-summary-arrow-size: 0.42rem;
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 8px;
+  padding: 0.5rem 0.9rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.85rem;
+}
+details.api-types > summary {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--ifm-color-content-secondary);
+}
+/* Center the arrow on the summary line. Docusaurus uses a fixed `top` tuned for
+   the default font size; with the smaller summary it drifts low. `top: 50%` plus
+   a half-height negative margin centers it regardless of font size, and leaves
+   `transform` free for the open/close rotation. */
+details.api-types > summary::before {
+  top: 50%;
+  margin-top: calc(var(--docusaurus-details-summary-arrow-size) * -1);
+}
+/* Trim the relocated specs so they read as compact metadata. */
+details.api-types pre,
+details.api-types code {
+  font-size: 0.82rem;
+}
+details.api-types p,
+details.api-types ul {
+  margin-bottom: 0.5rem;
+}

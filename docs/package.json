@@ -12,6 +12,7 @@
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
+    "gen:reference": "typedoc --options typedoc.json",
     "typecheck": "tsc"
   },
   "dependencies": {
@@ -20,7 +21,9 @@
     "@docusaurus/preset-classic": "3.9.2",
     "@fontsource-variable/jetbrains-mono": "^5.2.8",
     "@fontsource-variable/lexend": "^5.2.11",
+    "@jspsych-contrib/plugin-bart": "^1.2.0",
     "@jspsych-contrib/plugin-corsi-blocks": "^2.0.0",
+    "@jspsych-contrib/plugin-visual-search-click-target": "^0.4.0",
     "@mdx-js/react": "^3.0.0",
     "clsx": "^2.0.0",
     "jspsych": "^8.2.3",
@@ -32,6 +35,8 @@
     "@docusaurus/module-type-aliases": "3.9.2",
     "@docusaurus/tsconfig": "3.9.2",
     "@docusaurus/types": "3.9.2",
+    "typedoc": "^0.28.19",
+    "typedoc-plugin-markdown": "^4.12.0",
     "typescript": "~5.6.2"
   },
   "browserslist": {

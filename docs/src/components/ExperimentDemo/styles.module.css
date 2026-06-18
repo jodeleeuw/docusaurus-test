@@ -1,0 +1,385 @@
+.panel {
+  /* Demo colors, read in JS so each experiment matches the active theme. */
+  --demo-block: #8fa39a;
+  --demo-highlight: #f18426;
+  --demo-correct: #00904f;
+  --demo-incorrect: #db3424;
+  --demo-balloon: #e0503b;
+  --demo-stage-bg: #fcfefd;
+
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: clamp(1.25rem, 1rem + 1.5vw, 1.75rem);
+  background-color: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 16px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 12px 28px -18px rgba(0, 0, 0, 0.25);
+}
+
+:global([data-theme='dark']) .panel {
+  --demo-block: #3c4b43;
+  --demo-highlight: #ff9c3b;
+  --demo-correct: #32bb64;
+  --demo-incorrect: #f0563f;
+  --demo-balloon: #ff6b4a;
+  --demo-stage-bg: #0c120f;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 16px 32px -20px rgba(0, 0, 0, 0.7);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  /* Tight within the control group; the larger break before the title comes
+     from .tabs margin below, giving the heading room to breathe. */
+  gap: 0.45rem;
+}
+
+/* Experiment selector: two flat text labels, an underline under the active
+   one — the same wayfinding cue as the navbar links. No track and no pill, so
+   nothing nests inside the panel or borrows its background. */
+.tabs {
+  align-self: flex-start;
+  display: inline-flex;
+  gap: 1.5rem;
+  margin: 0.15rem 0 0.5rem;
+}
+
+.tab {
+  position: relative;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.25rem 0;
+  color: var(--ifm-color-content-secondary);
+  background: none;
+  border: 0;
+  transition: color 120ms ease;
+}
+
+.tab::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  border-radius: 2px;
+  background-color: var(--ifm-color-primary);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 200ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.tab:hover {
+  color: var(--ifm-color-content);
+}
+
+.tabActive,
+.tabActive:hover {
+  color: var(--ifm-color-primary);
+}
+
+.tabActive::after {
+  transform: scaleX(1);
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(1.35rem, 1.2rem + 0.6vw, 1.6rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.lead {
+  margin: 0;
+  max-width: 46ch;
+  color: var(--ifm-color-content-secondary);
+  font-size: 0.95rem;
+}
+
+/* The stage is a recessed canvas within the panel, not a second card: no
+   border — the lighter (light mode) / darker (dark mode) tone and the inset
+   radius read as a well in the workbench, so the panel stays the only card. */
+.stageWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: clamp(248px, 62vw, 360px);
+  padding: 12px;
+  background-color: var(--demo-stage-bg);
+  border-radius: 12px;
+}
+
+.stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* The corsi plugin rounds its block corners for a friendlier feel. */
+.stage :global(.jspsych-corsi-block) {
+  border-radius: 6px;
+  transition: background-color 120ms linear;
+}
+
+.overlay,
+.results {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  border-radius: 12px;
+}
+
+.overlay {
+  align-items: center;
+  justify-content: center;
+}
+
+.results {
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: clamp(1rem, 0.75rem + 1.5vw, 1.4rem);
+  background-color: var(--demo-stage-bg);
+  overflow: auto;
+}
+
+.score {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.score strong {
+  color: var(--ifm-color-primary);
+  font-size: 1.6rem;
+}
+
+.scoreSub {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--ifm-color-content-secondary);
+}
+
+.dataTable {
+  width: 100%;
+  margin: 0.25rem 0 0;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.dataTable th,
+.dataTable td {
+  padding: 0.35rem 0.5rem;
+  text-align: left;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+  vertical-align: top;
+}
+
+.dataTable th {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ifm-color-content-secondary);
+}
+
+.rtCell {
+  font-family: var(--ifm-font-family-monospace);
+  color: var(--ifm-color-content-secondary);
+  word-break: break-word;
+}
+
+.tagCorrect {
+  color: var(--ifm-color-success-dark);
+  font-weight: 600;
+}
+
+.tagWrong {
+  color: var(--ifm-color-danger-dark);
+  font-weight: 600;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.25rem;
+  margin-top: auto;
+  padding-top: 0.5rem;
+}
+
+.primaryButton,
+.secondaryButton {
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: transform 120ms ease, background-color 120ms ease,
+    border-color 120ms ease;
+}
+
+.primaryButton {
+  padding: 0.7rem 1.4rem;
+  color: #fff;
+  background-color: var(--ifm-color-primary);
+  border: 1px solid var(--ifm-color-primary);
+  box-shadow: 0 8px 20px -10px var(--ifm-color-primary);
+}
+
+.primaryButton:hover {
+  background-color: var(--ifm-color-primary-dark);
+  transform: translateY(-1px);
+}
+
+.secondaryButton {
+  padding: 0.5rem 1rem;
+  color: var(--ifm-color-primary);
+  background-color: transparent;
+  border: 1px solid var(--ifm-color-emphasis-300);
+}
+
+.secondaryButton:hover {
+  border-color: var(--ifm-color-primary);
+  background-color: var(--ifm-color-emphasis-100);
+}
+
+.codeLink {
+  font-weight: 600;
+}
+
+/* The arrow nudges forward on hover — the same wayfinding motif as the
+   homepage directory links. */
+.linkArrow {
+  display: inline-block;
+  transition: transform 160ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.codeLink:hover .linkArrow {
+  transform: translateX(3px);
+}
+
+.footnote {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--ifm-color-content-secondary);
+}
+
+/* ---- Balloon task (BART) -------------------------------------------------
+   Colors, the info boxes, and the balloon stage height are set through the
+   plugin's own parameters (see bart.tsx), so they track the theme without
+   overrides. What remains here is purely tightening the plugin's generous
+   default spacing for the compact hero panel, and theming its buttons (which
+   the plugin leaves to the host). These selectors only match while the BART
+   plugin is mounted. */
+.stage :global(#jspsych-bart-container) {
+  padding: 4px !important;
+}
+
+/* Trim the plugin's 30px stage margin in the smaller panel. */
+.stage :global(#jspsych-bart-balloon-container) {
+  margin: 4px auto 14px !important;
+}
+
+.stage :global(#jspsych-bart-info-container) {
+  gap: 12px !important;
+  margin-bottom: 14px !important;
+}
+
+.stage :global(#jspsych-bart-info-container) > div {
+  min-width: 0 !important;
+  max-width: 200px !important;
+  padding: 8px 18px !important;
+  /* Borderless filled readout: the fill comes from info_box_background_color,
+     and the plugin's transparent border is removed so it reads flat on the
+     canvas rather than as a nested card. */
+  border-width: 0 !important;
+  border-radius: 10px !important;
+}
+
+.stage :global(#jspsych-bart-button-container) button {
+  font-size: 1rem !important;
+  padding: 0.6rem 1.5rem !important;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 120ms ease, background-color 120ms ease,
+    border-color 120ms ease;
+}
+
+.stage :global(#jspsych-bart-pump-button) {
+  color: #fff;
+  background-color: var(--ifm-color-primary) !important;
+  border: 1px solid var(--ifm-color-primary) !important;
+  box-shadow: 0 8px 20px -10px var(--ifm-color-primary);
+}
+
+.stage :global(#jspsych-bart-pump-button):hover {
+  background-color: var(--ifm-color-primary-dark) !important;
+  transform: translateY(-1px);
+}
+
+.stage :global(#jspsych-bart-collect-button) {
+  color: var(--ifm-color-primary) !important;
+  background-color: transparent !important;
+  border: 1px solid var(--ifm-color-emphasis-300) !important;
+}
+
+.stage :global(#jspsych-bart-collect-button):hover {
+  border-color: var(--ifm-color-primary) !important;
+  background-color: var(--ifm-color-emphasis-100) !important;
+}
+
+/* ---- Visual search -------------------------------------------------------
+   The plugin fills its display element (fit_container), so the stage needs a
+   definite size for its container-query units to resolve. The plugin styles
+   only its "Absent" button (.jspsych-btn); theme it to match the panel and
+   give the scattered items a tap-affordance on hover. */
+.stage[data-experiment='search'] {
+  width: 100%;
+  height: clamp(224px, 58vw, 336px);
+}
+
+/* jsPsych wraps the display in .jspsych-content-wrapper > .jspsych-content,
+   which only get height from jsPsych's own stylesheet (not imported here), so
+   they collapse to 0 and the plugin's full-height container can't resolve its
+   container-query units. Make the wrapper chain fill the sized stage. */
+.stage[data-experiment='search'] :global(.jspsych-content-wrapper),
+.stage[data-experiment='search'] :global(.jspsych-content) {
+  width: 100%;
+  height: 100%;
+}
+
+/* Items lift slightly on hover so it's clear they're the targets to click.
+   The plugin centers each with translate(-50%, -50%), preserved here. */
+.stage[data-experiment='search'] :global(img) {
+  transition: transform 120ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.stage[data-experiment='search'] :global(img):hover {
+  transform: translate(-50%, -50%) scale(1.14) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .primaryButton:hover,
+  .stage :global(#jspsych-bart-pump-button):hover {
+    transform: none;
+  }
+  .linkArrow,
+  .codeLink:hover .linkArrow {
+    transition: none;
+    transform: none;
+  }
+  .tab::after {
+    transition: none;
+  }
+  .stage[data-experiment='search'] :global(img) {
+    transition: none;
+  }
+  .stage[data-experiment='search'] :global(img):hover {
+    transform: translate(-50%, -50%) !important;
+  }
+}

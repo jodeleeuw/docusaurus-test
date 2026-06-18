@@ -25,10 +25,10 @@ colors:
 typography:
   display:
     fontFamily: "'Lexend Variable', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif"
-    fontSize: "clamp(2.1rem, 1.4rem + 3vw, 3.4rem)"
+    fontSize: "clamp(2.3rem, 1.5rem + 3.3vw, 3.75rem)"
     fontWeight: 600
-    lineHeight: 1.05
-    letterSpacing: "-0.025em"
+    lineHeight: 1.04
+    letterSpacing: "-0.026em"
   heading:
     fontFamily: "'Lexend Variable', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif"
     fontSize: "clamp(1.5rem, 1.2rem + 1.4vw, 2.1rem)"
@@ -146,7 +146,7 @@ A restrained, green-led palette drawn directly from the jsPsych dot-brain logo: 
 **Character:** One humanist sans carries everything — headings, body, labels, UI — in multiple weights, paired only with a monospace for code (a genuine structure-contrast pairing, not two similar sans). Lexend was tuned from reading-proficiency research, so it earns its place on a behavioral-science site, and its rounded forms echo the lowercase "jspsych" wordmark. Both are self-hosted variable fonts, latin-subset, `font-display: swap`.
 
 ### Hierarchy
-- **Display** (600, `clamp(2.1rem, 1.4rem + 3vw, 3.4rem)`, line-height 1.05, letter-spacing -0.025em): Homepage hero headline only.
+- **Display** (600, `clamp(2.3rem, 1.5rem + 3.3vw, 3.75rem)`, line-height 1.04, letter-spacing -0.026em): Homepage hero headline only.
 - **Heading** (600, `clamp(1.5rem, 1.2rem + 1.4vw, 2.1rem)`, line-height 1.2, letter-spacing -0.018em on h1/h2): Section and page titles.
 - **Body** (400, 1rem, line-height 1.7): All prose. Cap measure at 65–75ch; long-form prose uses `text-wrap: pretty`.
 - **Label** (600, 0.72rem, letter-spacing 0.01em): Small status chips like the demo's "Live experiment" badge.

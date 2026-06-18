@@ -49,10 +49,20 @@
     cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+/* Runtime trigger (HeroBrain): the same flash, but driven by JS toggling
+   data-fire on a fresh set of dots each pulse — so the chain can start from a
+   random seed instead of the one baked cascade. Per-dot --fd/--fs/--fdur/--g
+   are set inline by HeroBrain; removing/re-adding the attribute replays it. */
+.dot[data-fire='1'] {
+  animation: synapseFire var(--fdur, 500ms) var(--fd, 0ms)
+    cubic-bezier(0.22, 1, 0.36, 1);
+}
+
 /* Reduced motion: no travel, no stagger — a single calm collective "wake"
    where the whole mark brightens for a beat, then eases back. */
 @media (prefers-reduced-motion: reduce) {
-  .dot {
+  .dot,
+  .dot[data-fire='1'] {
     animation: none !important;
   }
   .brain {
