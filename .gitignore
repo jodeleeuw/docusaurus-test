@@ -3,3 +3,7 @@
 python/
 .venv/
 .vscode/
+
+# Dependencies and build caches (monorepo root + packages)
+node_modules/
+.turbo/
