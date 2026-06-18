@@ -16,28 +16,24 @@ type SearchResults = {
 };
 
 // Display sizes grow each round so search time visibly climbs with clutter.
-const SET_SIZES = [4, 8, 12];
-const ROTATIONS = [0, 90, 180, 270];
+const SET_SIZES = [6, 12, 18];
 
-function pick<T>(arr: T[]): T {
-  return arr[Math.floor(Math.random() * arr.length)];
-}
+type Color = 'target' | 'other';
+type Orient = 'vertical' | 'horizontal';
 
-// A rotated "T" (target) or "L" (distractor) as an inline SVG data URI, drawn
-// in the given ink color. T-among-L is the classic search that resists pop-out,
-// so response time scales with the number of items.
-function glyph(kind: 'T' | 'L', color: string): string {
-  const path =
-    kind === 'T'
-      ? 'M22 34 H78 M50 34 V82' // bar across the top, stem down the middle
-      : 'M40 20 V80 H78'; // down then along the foot — a corner junction
+// A colored bar in one of two orientations, as an inline SVG data URI. The
+// target is one specific (color, orientation) pairing; every distractor shares
+// exactly one of those two features. Because no single feature isolates the
+// target, attention can't pop out to it — this is a conjunction search, and
+// response time climbs steeply with the number of items.
+function bar(color: string, orient: Orient): string {
+  const rotate = orient === 'horizontal' ? ' transform="rotate(90 50 50)"' : '';
   // Single encode of the whole SVG turns the color's `#` into %23; pre-encoding
-  // it here would double-encode and render an invalid (invisible) stroke.
+  // it here would double-encode and render an invalid (invisible) fill.
   const svg =
     `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">` +
-    `<g transform="rotate(${pick(ROTATIONS)} 50 50)" fill="none" stroke="${color}" ` +
-    `stroke-width="12" stroke-linecap="round" stroke-linejoin="round">` +
-    `<path d="${path}"/></g></svg>`;
+    `<rect x="38" y="14" width="24" height="72" rx="12" fill="${color}"${rotate}/>` +
+    `</svg>`;
   return `data:image/svg+xml,${encodeURIComponent(svg)}`;
 }
 
@@ -45,7 +41,7 @@ export const search: ExperimentDef<SearchResults> = {
   id: 'search',
   tabLabel: 'Visual search',
   title: 'Visual search',
-  lead: 'Find the T hidden among the Ls and tap it. Each round adds more items to scan.',
+  lead: 'Find the green upright bar and tap it. Every other bar is either green or upright — only one is both, and each round adds more to scan.',
   startLabel: 'Start the experiment',
 
   async build(ctx) {
@@ -54,14 +50,20 @@ export const search: ExperimentDef<SearchResults> = {
     );
     const VisualSearch = mod.default;
 
-    const ink = ctx.readVar('--ifm-color-content', '#1f2622');
+    // Two features, two values each. The target is green + vertical; distractors
+    // each share exactly one feature with it (green + horizontal, or orange +
+    // vertical), which is what makes this a conjunction search.
+    const green = ctx.readVar('--ifm-color-primary', '#00683e');
+    const orange = ctx.readVar('--jspsych-orange', '#f18426');
+    const target = bar(green, 'vertical');
 
     return SET_SIZES.map((setSize) => {
-      // One target plus (setSize - 1) distractors, each with its own rotation.
-      const images = [
-        glyph('T', ink),
-        ...Array.from({length: setSize - 1}, () => glyph('L', ink)),
-      ];
+      // One target plus (setSize - 1) distractors, split evenly between the two
+      // single-feature-sharing types so neither feature alone reveals the target.
+      const distractors = Array.from({length: setSize - 1}, (_, i) =>
+        i % 2 === 0 ? bar(green, 'horizontal') : bar(orange, 'vertical'),
+      );
+      const images = [target, ...distractors];
       return {
         type: VisualSearch,
         images,
@@ -70,7 +72,7 @@ export const search: ExperimentDef<SearchResults> = {
         fit_container: true,
         show_absent_button: false,
         background_color: 'transparent',
-        image_size: 11,
+        image_size: 9,
         search_area_width: 94,
         search_area_height: 92,
         data: {phase: 'search', setSize},
@@ -119,11 +121,6 @@ export const search: ExperimentDef<SearchResults> = {
         ) : (
           <p className={styles.score}>Tricky — keep looking.</p>
         )}
-        <p className={styles.scoreSub}>
-          jsPsych timed every search — the more items on screen, the longer it
-          took to find the T.
-        </p>
-
         <table className={styles.dataTable}>
           <thead>
             <tr>
