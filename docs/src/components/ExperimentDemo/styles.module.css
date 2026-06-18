@@ -363,9 +363,168 @@
   transform: translate(-50%, -50%) scale(1.14) !important;
 }
 
+/* ---- Mouse tracking ------------------------------------------------------
+   The two answer buttons are pinned to the top corners and the question sits
+   in the middle, where the cursor lands after the start click — so the path
+   the extension records bends from the center up toward a corner. jsPsych's
+   own stylesheet isn't imported here (see the visual-search notes above), so
+   the content wrapper, button group, and buttons are all styled from scratch. */
+.stage[data-experiment='mousetracking'] {
+  width: 100%;
+  height: clamp(248px, 58vw, 340px);
+}
+
+.stage[data-experiment='mousetracking'] :global(.jspsych-content-wrapper),
+.stage[data-experiment='mousetracking'] :global(.jspsych-content) {
+  width: 100%;
+  height: 100%;
+}
+
+.stage[data-experiment='mousetracking'] :global(.jspsych-content) {
+  position: relative;
+}
+
+.stage[data-experiment='mousetracking']
+  :global(#jspsych-html-button-response-stimulus) {
+  position: absolute;
+  top: 56%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(90%, 32ch);
+}
+
+.mtPrompt {
+  text-align: center;
+}
+
+.mtQuestion {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.mtHint {
+  margin: 0.4rem 0 0;
+  font-size: 0.85rem;
+  color: var(--ifm-color-content-secondary);
+}
+
+.stage[data-experiment='mousetracking']
+  :global(#jspsych-html-button-response-btngroup) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.stage[data-experiment='mousetracking'] :global(button.jspsych-btn) {
+  font: inherit;
+  font-weight: 600;
+  padding: 0.6rem 1.4rem;
+  color: var(--ifm-color-primary);
+  background-color: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 120ms ease, border-color 120ms ease,
+    background-color 120ms ease;
+}
+
+.stage[data-experiment='mousetracking'] :global(button.jspsych-btn):hover {
+  border-color: var(--ifm-color-primary);
+  background-color: var(--ifm-color-emphasis-100);
+  transform: translateY(-1px);
+}
+
+/* The replayed trajectory. Strokes use non-scaling-stroke so they keep a
+   constant weight however the captured bounding box is scaled into the panel. */
+.mtSvg {
+  width: 100%;
+  flex: 1 1 auto;
+  min-height: 0;
+  max-height: 210px;
+  margin: 0.1rem 0;
+  overflow: visible;
+}
+
+.mtPath {
+  fill: none;
+  stroke: var(--ifm-color-primary);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.9;
+  vector-effect: non-scaling-stroke;
+}
+
+.mtStart {
+  fill: var(--ifm-color-content-secondary);
+}
+
+.mtEnd {
+  fill: var(--ifm-color-primary);
+}
+
+.mtTarget {
+  fill: var(--ifm-color-emphasis-100);
+  stroke: var(--ifm-color-emphasis-300);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.mtTargetChosen {
+  fill: var(--ifm-color-primary);
+  fill-opacity: 0.14;
+  stroke: var(--ifm-color-primary);
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+
+.mtTargetLabel {
+  fill: var(--ifm-color-content);
+  font-size: 13px;
+  font-weight: 600;
+  text-anchor: middle;
+  dominant-baseline: central;
+}
+
+.mtLegend {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--ifm-color-content-secondary);
+}
+
+.mtLegendStart,
+.mtLegendEnd {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.mtLegendStart {
+  background-color: var(--ifm-color-content-secondary);
+}
+
+.mtLegendEnd {
+  margin-left: 0.6rem;
+  background-color: var(--ifm-color-primary);
+}
+
+.mtLegendMeta {
+  margin-left: auto;
+  font-variant-numeric: tabular-nums;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .primaryButton:hover,
-  .stage :global(#jspsych-bart-pump-button):hover {
+  .stage :global(#jspsych-bart-pump-button):hover,
+  .stage[data-experiment='mousetracking'] :global(button.jspsych-btn):hover {
     transform: none;
   }
   .linkArrow,

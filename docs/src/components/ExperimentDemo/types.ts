@@ -31,6 +31,13 @@ export interface ExperimentDef<R = unknown> {
   lead: string;
   /** Label for the idle start button. */
   startLabel: string;
+  /**
+   * Optionally lazy-load and configure jsPsych extensions for this experiment.
+   * Resolves to the array passed to `initJsPsych({extensions})`. The plugin
+   * class is module-cached, so a trial in `build` can reference the same
+   * extension type by importing the same module.
+   */
+  extensions?: (ctx: RunContext) => Promise<any[]>;
   /** Lazy-load the plugin(s) and build the jsPsych timeline for one run. */
   build: (ctx: RunContext) => Promise<any[]>;
   /** Derive a results object from the finished jsPsych instance. */

@@ -5,6 +5,7 @@ import type {DemoPhase, ExperimentDef, RunContext} from './types';
 import {corsi} from './corsi';
 import {bart} from './bart';
 import {search} from './search';
+import {mousetracking} from './mousetracking';
 
 /**
  * Real jsPsych experiments, embedded live in the homepage. The shell owns the
@@ -17,7 +18,7 @@ import {search} from './search';
  * collected — the point of the demo.
  */
 
-const EXPERIMENTS: ExperimentDef<any>[] = [corsi, bart, search];
+const EXPERIMENTS: ExperimentDef<any>[] = [corsi, bart, search, mousetracking];
 
 function makeReadVar(el: HTMLElement) {
   return (name: string, fallback: string): string => {
@@ -82,9 +83,10 @@ export default function ExperimentDemo(): React.ReactNode {
       readVar: makeReadVar(stage),
     };
 
-    const [{initJsPsych}, timeline] = await Promise.all([
+    const [{initJsPsych}, timeline, extensions] = await Promise.all([
       import('jspsych'),
       def.build(ctx),
+      def.extensions?.(ctx) ?? Promise.resolve(undefined),
     ]);
 
     // Bail if the user switched tabs or left while the bundle was loading.
@@ -92,6 +94,7 @@ export default function ExperimentDemo(): React.ReactNode {
 
     const jsPsych = initJsPsych({
       display_element: stage,
+      extensions,
       on_finish: () => {
         if (runToken.current !== myToken) return;
         setResults(def.collect(jsPsych));
