@@ -13,11 +13,11 @@
      right side reaches under the experiment block. */
   transform: translate(-22%, 28%);
   pointer-events: none;
-  opacity: 0.1;
+  opacity: 0.14;
 }
 
 [data-theme='dark'] .bg {
-  opacity: 0.17;
+  opacity: 0.22;
 }
 
 /* Fill the square watermark box (JspsychBrain's own .brain is height:100%). */
@@ -33,9 +33,9 @@
     bottom: auto;
     top: 0;
     transform: translate(-50%, -18%);
-    opacity: 0.06;
+    opacity: 0.09;
   }
   [data-theme='dark'] .bg {
-    opacity: 0.12;
+    opacity: 0.16;
   }
 }
