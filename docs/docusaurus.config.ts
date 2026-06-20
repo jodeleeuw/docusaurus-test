@@ -47,15 +47,15 @@ const config: Config = {
           lastVersion: 'current',
           versions: {
             current: {
-              label: 'Current',
+              label: 'Current Version',
               path: 'current'
             },
             '0.1': {
-              label: '0.1',
+              label: 'Version 0.1',
               path: '0.1',
             },
             '0.0': {
-              label: '0.0',
+              label: 'Version 0.0',
               path: '0.0',
             },
           },
@@ -149,8 +149,9 @@ const config: Config = {
         },
         {
           href: 'https://github.com/jspsych/jspsych',
-          label: 'GitHub',
           position: 'right',
+          className: 'header-github-link',
+          'aria-label': 'jsPsych on GitHub',
         },
       ],
     },
