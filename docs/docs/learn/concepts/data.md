@@ -1,0 +1,165 @@
+---
+title: The data object
+description: How jsPsych collects data in memory, and how to add to, filter, and aggregate it.
+tags:
+- Data
+- Method
+pageData:
+- migration: unchanged
+- sidebar: title
+---
+
+# The data object
+
+There are two very different kinds of data storage: data stored in **memory** and data stored **permanently**. Data stored permanently exists even after the browser running jsPsych closes, typically in a database or in a file on a server. Data stored in memory exists only as long the browser window running jsPsych is open.
+
+This page covers the data that jsPsych collects in memory while an experiment runs — how it is structured, and how to add to, filter, and aggregate it. For getting that data out of the browser and storing it permanently, see [Storing and exporting data](../guides/storing-data.md).
+
+jsPsych has many features for interacting with data stored in memory, but few for permanent data storage. This is a deliberate choice, as there are dozens of ways that data could be stored permanently. jsPsych does not lock you into one particular solution.
+
+## Storing data in jsPsych's data structure
+
+jsPsych has a centralized collection of data that is built as the experiment runs. Each trial adds to the collection, and you can access the data with various functions, including `jsPsych.data.get()`, which returns the entire set of data.
+
+In most cases, data collection will be automatic and hidden. Plugins save data on their own so it is not uncommon to have the only interaction with the data be at the end of the experiment when it is time to save it in a permanent manner (see [Storing and exporting data](../guides/storing-data.md)). However, there are some situations in which you may want to interact with the data; in particular, you may want to store additional data that the plugins are not recording, like a subject identifier or condition assignment. You may also want to add data on a trial by trial basis. For example, in a Stroop paradigm you would want to label which trials are congruent and which are incongruent. These scenarios are explored below.
+
+### Adding data to all trials
+
+Often it is useful to add a piece of data to *all* of the trials in the experiment. For example, appending the subject ID to each trial. This can be done  with the `jsPsych.data.addProperties()` function. Here is an example:
+
+```javascript
+// generate a random subject ID with 15 characters
+var subject_id = jsPsych.randomization.randomID(15);
+
+// pick a random condition for the subject at the start of the experiment
+var condition_assignment = jsPsych.randomization.sampleWithoutReplacement(['conditionA', 'conditionB', 'conditionC'], 1)[0];
+
+// record the condition assignment in the jsPsych data
+// this adds a property called 'subject' and a property called 'condition' to every trial
+jsPsych.data.addProperties({
+  subject: subject_id,
+  condition: condition_assignment
+});
+```
+
+### Adding data to a particular trial or set of trials
+
+Data can be added to a particular trial by setting the `data` parameter for the trial. The `data` parameter is an object of key-value pairs, and each pair is added to the data for that trial.
+
+```js
+var trial = {
+  type: jsPsychImageKeyboardResponse,
+  stimulus: 'imgA.jpg',
+  data: { image_type: 'A' }
+}
+```
+
+Data declared in this way is also saved in the trials on any nested timelines:
+
+```js
+var block = {
+  type: jsPsychImageKeyboardResponse,
+  data: { image_type: 'A' },
+  timeline: [
+    {stimulus: 'imgA1.jpg'},
+    {stimulus: 'imgA2.jpg'}
+  ]
+}
+```
+
+The data object for a trial can also be updated in the `on_finish` event handler. You can override properties or add new ones. This is particularly useful for cases where the value depends on something that happened during the trial.
+
+```js
+var trial = {
+  type: jsPsychImageKeyboardResponse,
+  stimulus: 'imgA.jpg',
+  on_finish: function(data){
+    if(jsPsych.pluginAPI.compareKeys(data.response, 'j')){
+      data.correct = true;
+    } else {
+      data.correct = false;
+    }
+  }
+}
+```
+
+### Skipping data collection for a particular trial
+
+Sometimes you may want to skip data collection for a particular trial. This can be done by setting the `record_data` parameter to `false`. This is useful if you want your data output to only contain the trials that collect relevant responses from the participant. For example, you might want to skip data collection for trials that just present a fixation cross for a fixed period of time.
+
+```js
+var trial = {
+  type: jsPsychImageKeyboardResponse,
+  stimulus: 'imgA.jpg',
+  record_data: false
+}
+```
+
+## Aggregating and manipulating jsPsych data
+
+When accessing the data with `jsPsych.data.get()` the returned object is a special data collection object that exposes a number of methods for aggregating and manipulating the data. The full list of methods is detailed in the [data module documentation](../../reference/core/jspsych-data.md).
+
+Here are some examples of data collection manipulation.
+
+All data generated by the image-keyboard-response plugin:
+```js
+var data = jsPsych.data.get().filter({trial_type: 'image-keyboard-response'});
+```
+
+All data generated by the categorize-image plugin with a correct response:
+```js
+var data = jsPsych.data.get().filter({trial_type: 'categorize-image', correct: true});
+```
+
+All data with a response time between 100 and 500ms:
+```js
+var data = jsPsych.data.get().filterCustom(function(x){ return x.rt >= 100 && x.rt <=500 });
+```
+
+Applying filters consecutively to get all trials from a particular plugin with a response time above 100ms:
+```js
+var data = jsPsych.data.get().filter({trial_type: 'image-keyboard-response'}).filterCustom(function(x){ return x.rt > 100; });
+```
+
+Getting the data from the last n trials:
+```js
+var n = 3;
+var data = jsPsych.data.get().last(n);
+```
+
+Getting the data from the last n trials with a correct response:
+```js
+var n = 3;
+var data = jsPsych.data.get().filter({correct: true}).last(n);
+```
+
+Getting the data from the first n trials:
+```js
+var n = 3;
+var data = jsPsych.data.get().first(n);
+```
+
+Counting the number of trials with a correct response in a data collection:
+```js
+var count = jsPsych.data.get().filter({correct: true}).count();
+```
+
+Selecting all of the response times from a data collection:
+```js
+var response_times = jsPsych.data.get().select('rt');
+```
+
+Calculating various descriptive statistics on the response times in a data collection:
+
+```js
+jsPsych.data.get().select('rt').mean();
+jsPsych.data.get().select('rt').sum();
+jsPsych.data.get().select('rt').min();
+jsPsych.data.get().select('rt').max();
+jsPsych.data.get().select('rt').variance();
+jsPsych.data.get().select('rt').sd();
+jsPsych.data.get().select('rt').median();
+jsPsych.data.get().select('rt').count();
+```
+
+When you are ready to save this data outside the browser, see [Storing and exporting data](../guides/storing-data.md).

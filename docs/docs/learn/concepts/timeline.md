@@ -104,7 +104,7 @@ A common pattern in behavioral experiments is to repeat the same procedure/task 
 
 One shortcut to implement this pattern is with the nested timeline approach described in the previous section, but this only works if all the trials use the same plugin type. Timeline variables are a more general solution. With timeline variables you define the procedure once (as a timeline) and specify a set of parameters and their values for each iteration through the timeline.
 
-What follows is an example of how to use timeline variables. The [simple reaction time tutorial](learn/researchers/tutorials/rt-task.md) also explains how to use timeline variables.
+What follows is an example of how to use timeline variables. The [simple reaction time tutorial](../tutorials/rt-task.md) also explains how to use timeline variables.
 
 Suppose we want to create an experiment where people see a set of faces. Perhaps this is a memory experiment and this is the phase of the experiment where the faces are being presented for the first time. In between each face, a fixation cross is displayed on the screen. Without timeline variables, we would need to add many trials to the timeline, alternating between trials showing the fixation cross and trials showing the face and name. This could be done efficiently using a loop or function to create the timeline, but timeline variables make it even easier - as well as adding extra features like sampling and randomization.
 

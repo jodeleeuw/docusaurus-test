@@ -10,7 +10,7 @@ pageData:
 
 # Integrating with Mechanical Turk
 
-A common use of jsPsych is to build an online experiment and find participants using [Mechanical Turk](http://www.mturk.com/). Once an experiment is available through a web server and data is being [saved on the server](data.md), connecting the experiment with Mechanical Turk takes only a few additional steps. jsPsych has some built-in functionality to assist with this process. 
+A common use of jsPsych is to build an online experiment and find participants using [Mechanical Turk](http://www.mturk.com/). Once an experiment is available through a web server and data is being [saved on the server](../concepts/data.md), connecting the experiment with Mechanical Turk takes only a few additional steps. jsPsych has some built-in functionality to assist with this process. 
 
 ## The jsPsych.turk module
 

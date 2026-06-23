@@ -125,6 +125,12 @@ const config: Config = {
           position: 'left',
           label: 'Learn',
         },
+        { // Extend Tab
+          type: 'docSidebar',
+          sidebarId: 'extend',
+          position: 'left',
+          label: 'Extend',
+        },
         { // References Tab
           type: 'docSidebar',
           sidebarId: 'reference',

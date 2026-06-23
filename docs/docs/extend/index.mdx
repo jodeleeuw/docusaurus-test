@@ -1,0 +1,33 @@
+---
+title: The jsPsych ecosystem
+description: How jsPsych is extended — plugins, extensions, and timelines — and how to build and share your own.
+slug: /extend
+keywords: [extend, plugins, extensions, timelines, community]
+---
+
+# Extend jsPsych
+
+jsPsych is small at its core and powerful at its edges. Almost everything a participant sees or does in an experiment comes from a **plugin**, **extension**, or **timeline** — and any of them can be written by the community. This section is about that ecosystem: finding what others have built, building your own, sharing it, and contributing to the core project.
+
+## The building blocks
+
+| Building block | What it is | When you'd build one |
+|---|---|---|
+| **[Plugin](../learn/concepts/plugins.md)** | Defines a single kind of trial or event (showing a stimulus, collecting a response). | You need a type of trial that no existing plugin provides. |
+| **[Extension](../learn/concepts/extensions.md)** | Adds a capability that runs *alongside* trials (e.g. eye tracking, mouse tracking). | You want to record or augment data across many trials, regardless of plugin. |
+| **Timeline** | A reusable, parameterized procedure built from existing plugins. | You want to package and share a whole task or paradigm. |
+
+Plugins and extensions you build can live in your own project, or be shared with the community through the [`jspsych-contrib`](https://github.com/jspsych/jspsych-contrib) repository. Reusable timelines are shared through [`jspsych-timelines`](https://github.com/jspsych/jspsych-timelines).
+
+## Where to go next
+
+- **[Browse the ecosystem](browse.md)** — find community plugins, extensions, and timelines you can use today.
+- **[Build a plugin](plugins/plugin-tutorial.md)** — a step-by-step walkthrough, plus a reference on plugin anatomy.
+- **[Build an extension](extensions/extension-development.md)** — add cross-trial capabilities.
+- **[Build a timeline](build-a-timeline.md)** — package a whole procedure for reuse.
+- **[Publish & share](publish-and-share.md)** — get your work into the community repositories.
+- **[Contribute to the core project](contributing/contributing.md)** — improve jsPsych itself.
+
+:::tip Start from a template
+You don't have to start from a blank file. The `npx @jspsych/new-plugin` and `npx @jspsych/new-timeline` tools scaffold a complete, ready-to-edit project for you. The build guides walk through using them.
+:::

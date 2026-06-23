@@ -81,9 +81,9 @@ Additionally, the `parameters` property is used to check parameter inputs from t
 
 The `class` declaration, in this case `class MindlessClickingPlugin`, is the second writable portion of `index.ts`. This is where we add the actual script for the plugin. It implements:
 
-* [A static `info` property](learn/developers/plugins/plugin-components.md#static-info) that contains `const info` from earlier, describing the plugin's parameters, data generated, and version.
-* [A `constructor()`](learn/developers/plugins/plugin-components.md#constructor) that accepts an instance of jsPsych. We'll be able to call that instance throughout the `trial()` method below as `this.jsPsych`.
-* [A `trial()` method](learn/developers/plugins/plugin-components.md#trial) that accepts two arguments: an `HTMLElement` called `display_element`, and a trial parameters object as `trial`. There is an optional third argument to [handle the `on_load` event](learn/researchers/overview/events.md#on_load) in certain cirumstances. The `trial()` method should *either* invoke `jsPsych.finishTrial()` or <!-- check with Josh to verify this -->should be an `async` function that returns a data object to [end the trial and save data](#part-4-ending-the-trial).
+* [A static `info` property](plugin-components.md#static-info) that contains `const info` from earlier, describing the plugin's parameters, data generated, and version.
+* [A `constructor()`](plugin-components.md#constructor) that accepts an instance of jsPsych. We'll be able to call that instance throughout the `trial()` method below as `this.jsPsych`.
+* [A `trial()` method](plugin-components.md#trial) that accepts two arguments: an `HTMLElement` called `display_element`, and a trial parameters object as `trial`. There is an optional third argument to [handle the `on_load` event](../../learn/guides/events.md#on_load) in certain cirumstances. The `trial()` method should *either* invoke `jsPsych.finishTrial()` or <!-- check with Josh to verify this -->should be an `async` function that returns a data object to [end the trial and save data](#part-4-ending-the-trial).
 
 ```javascript title="src/index.ts"
 class MindlessClickingPlugin implements JsPsychPlugin<Info> {

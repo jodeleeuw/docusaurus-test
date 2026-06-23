@@ -1,9 +1,0 @@
-{
-  "position": 0,
-  "label": "Researchers",
-  "description": "Learn how to design an experiment in jsPsych",
-  "link": {
-    "type": "doc",
-    "id": "learn/researchers/index"
-  }
-}

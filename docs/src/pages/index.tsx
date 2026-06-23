@@ -59,10 +59,10 @@ function Explainer() {
             One framework, assembled from plugins
           </Heading>
           <p className={styles.explainLead}>
-            Each <Link to={`${D}/learn/researchers/overview/plugins`}>plugin</Link>{' '}
+            Each <Link to={`${D}/learn/concepts/plugins`}>plugin</Link>{' '}
             defines one kind of event — show an image, play a sound, record
             which key was pressed and when. You arrange plugins on a{' '}
-            <Link to={`${D}/learn/researchers/overview/timeline`}>timeline</Link>{' '}
+            <Link to={`${D}/learn/concepts/timeline`}>timeline</Link>{' '}
             to build a procedure. Use the plugins bundled with jsPsych, community
             plugins from jspsych-contrib, or write your own.
           </p>
@@ -101,7 +101,7 @@ const PATHS: Path[] = [
     feature: true,
   },
   {
-    to: `${D}/learn/researchers`,
+    to: `${D}/learn`,
     title: 'Learn',
     desc: 'Guides and step-by-step tutorials for designing and running studies.',
   },

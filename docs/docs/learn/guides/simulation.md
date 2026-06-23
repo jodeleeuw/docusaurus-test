@@ -106,7 +106,7 @@ If you want to turn off simulation mode for a trial, set `simulate: false`.
 
 #### Functions and timeline variables
 
-The `simulation_options` parameter is compatible with both [dynamic parameters](dynamic-parameters.md) and [timeline variables](timeline.md#timeline-variables). 
+The `simulation_options` parameter is compatible with both [dynamic parameters](../concepts/dynamic-parameters.md) and [timeline variables](../concepts/timeline.md#timeline-variables). 
 Dynamic parameters can be especially useful if you want to randomize the data for each run of the simulation. 
 For example, you can specify the `rt` as a sample from an ExGaussian distribution.
 

@@ -65,7 +65,7 @@ An automatic or manually updated progress bar can be displayed at the top of the
 
 Specifying the `use_webaudio` parameter in `initJsPsych()` allows you to choose whether to use the WebAudio API or HTML5 audio for playing audio files during your experiment. By default, jsPsych uses the WebAudio API to play audio files. Among other features, the WebAudio API allows for more precise measurement of response times relative to the onset of the audio. 
 
-However, loading files through the WebAudio API causes errors when running an experiment offline (i.e., by double-clicking on the HTML file, rather than hosting it on a web server). This is due to the [cross-origin security policy](https://security.stackexchange.com/a/190321) implemented by web browsers. For this reason, jsPsych switches to a 'safe mode' when it detects that the webpage is running offline, and automatically uses HTML5 audio to prevent errors, even when `use_webaudio` has been explicitly set to `true`. For more information, see the section [Cross-origin requests (CORS) and safe mode](running-experiments.md#cross-origin-requests-cors-and-safe-mode) on the Running Experiments page.
+However, loading files through the WebAudio API causes errors when running an experiment offline (i.e., by double-clicking on the HTML file, rather than hosting it on a web server). This is due to the [cross-origin security policy](https://security.stackexchange.com/a/190321) implemented by web browsers. For this reason, jsPsych switches to a 'safe mode' when it detects that the webpage is running offline, and automatically uses HTML5 audio to prevent errors, even when `use_webaudio` has been explicitly set to `true`. For more information, see the section [Cross-origin requests (CORS) and safe mode](../deploy/running-experiments.md#cross-origin-requests-cors-and-safe-mode) on the Running Experiments page.
 
 ```js
 initJsPsych({
@@ -127,7 +127,7 @@ Note that this setting only applies to key choices and responses that use jsPsyc
 
 ## Override 'safe mode' when running experiments offline
 
-By default, jsPsych switches to a 'safe mode' when it detects that the webpage is running offline (via the `file://` protocol) in order to prevent certain errors. Specifically, in safe mode, HTML5 audio is used to play audio files (even when `use_webaudio` has been explicitly set to `true`) and video preloading is disabled (both automatic and manual preloading). For more information, see the [Cross-origin requests (CORS) and safe mode](running-experiments.md#cross-origin-requests-cors-and-safe-mode) section on the Running Experiments page.
+By default, jsPsych switches to a 'safe mode' when it detects that the webpage is running offline (via the `file://` protocol) in order to prevent certain errors. Specifically, in safe mode, HTML5 audio is used to play audio files (even when `use_webaudio` has been explicitly set to `true`) and video preloading is disabled (both automatic and manual preloading). For more information, see the [Cross-origin requests (CORS) and safe mode](../deploy/running-experiments.md#cross-origin-requests-cors-and-safe-mode) section on the Running Experiments page.
 
 It's possible to override this safe mode feature by setting the `override_safe_mode` parameter to `true` in `initJsPsych`. This is something you might do if you've disabled certain security settings in your browser for testing purposes. This parameter has no effect when your experiment is running online (on a server), because it will be using the `http://` or `https://` protocol, which does not trigger safe mode. 
 
@@ -139,7 +139,7 @@ initJsPsych({
 
 ## Add extensions
 
-[Extensions](extensions.md) are jsPsych modules that can run throughout the experiment and interface with any plugin to extend the functionality of the plugin. One example of an extension is eye tracking, which allows you to gather gaze data during any trial and add it to that trial's data object. If you want to use extensions in your experiment, you must specify this when you initialize the experiment with `initJsPsych`. The `extensions` parameter in `initJsPsych` is an array of objects, where each object specifies the extension that you'd like to use in the experiment. Below is an example of adding the webgazer extension.
+[Extensions](../concepts/extensions.md) are jsPsych modules that can run throughout the experiment and interface with any plugin to extend the functionality of the plugin. One example of an extension is eye tracking, which allows you to gather gaze data during any trial and add it to that trial's data object. If you want to use extensions in your experiment, you must specify this when you initialize the experiment with `initJsPsych`. The `extensions` parameter in `initJsPsych` is an array of objects, where each object specifies the extension that you'd like to use in the experiment. Below is an example of adding the webgazer extension.
 
 ```js
 initJsPsych({

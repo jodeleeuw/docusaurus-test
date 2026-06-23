@@ -17,7 +17,7 @@ jsPsych has several plugins that allow you to present survey questions during yo
 * Survey-* plugins: [`survey-likert`](), [`survey-multi-choice`](), [`survey-multi-select`](), [`survey-text`]()
     * Only one question type and one page per trial
     * Parameterization makes it easy to define questions
-    * Work well with [timeline variables](timeline.md#timeline-variables)
+    * Work well with [timeline variables](../concepts/timeline.md#timeline-variables)
     * Ideal for adding survey-style questions into repetitive trial procedures
     * Limited functionality and customization options
 * [`survey-html-form`]() plugin
@@ -25,7 +25,7 @@ jsPsych has several plugins that allow you to present survey questions during yo
     * No parameters for defining questions - you write the form HTML
     * Maximally flexible, so ideal if you need a lot of control over the survey content and style
 * [`survey`]() plugin
-    * Not well-suited for use with [timeline variables](timeline.md#timeline-variables)
+    * Not well-suited for use with [timeline variables](../concepts/timeline.md#timeline-variables)
     * Large set of built-in question types and parameterized customization options
     * Can mix different question types on the same page
     * Can present mutliple pages that participants can navigate back and forth through, without losing responses
@@ -322,7 +322,7 @@ const survey_function = (survey) => {
 :::
 
 
-Rather than repeating a question format within the same trial, perhaps you want to use trial-level variables to generate separate `survey` trials, for instance in order to incorporate them into a larger repeating trial procedure. jsPsych's [timeline variables](timeline.md#timeline-variables) feature was designed to address this use case, but the use of timeline variables looks a little different with the `survey` plugin. This is because the various individual parameters that you might want to change across `survey` trials don't have their own plugin parameters - instead everything is nested within the `survey_json` parameter. Below are some examples showing how you can programmatically generate survey trials using a set of trial-level variables.
+Rather than repeating a question format within the same trial, perhaps you want to use trial-level variables to generate separate `survey` trials, for instance in order to incorporate them into a larger repeating trial procedure. jsPsych's [timeline variables](../concepts/timeline.md#timeline-variables) feature was designed to address this use case, but the use of timeline variables looks a little different with the `survey` plugin. This is because the various individual parameters that you might want to change across `survey` trials don't have their own plugin parameters - instead everything is nested within the `survey_json` parameter. Below are some examples showing how you can programmatically generate survey trials using a set of trial-level variables.
 
 1. **Use the conventional timeline variables approach with the `survey_json` parameter.** This approach is probably not ideal, because the timeline variables array has to contain the entire `survey_json` object for each trial. This kind of defeats the purpose of timeline variables, because you are still defining all of the survey JSON separately for each question/trial. In any case, here's what it looks like:
 

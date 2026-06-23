@@ -15,7 +15,7 @@ import styles from './styles.module.css';
  * Swizzled DocCategoryGeneratedIndexPage.
  *
  * Same fix as theme/DocItem/Layout, applied to generated-index pages (category
- * landing pages like /learn/researchers/overview): stock stacks DocBreadcrumbs
+ * landing pages like /learn/concepts): stock stacks DocBreadcrumbs
  * and DocVersionBadge as two separate rows above the title, which left the
  * version chip floating on its own orphan line — inconsistent with regular doc
  * pages, where the chip sits inline at the top right. Here the two orienting

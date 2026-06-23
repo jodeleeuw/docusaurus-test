@@ -142,7 +142,7 @@ export const corsi: ExperimentDef<CorsiResults> = {
           </button>
           <Link
             className={styles.codeLink}
-            to="/docs/current/learn/researchers/tutorials/rt-task">
+            to="/docs/current/learn/tutorials/rt-task">
             See how it&apos;s built{' '}
             <span className={styles.linkArrow} aria-hidden="true">
               →

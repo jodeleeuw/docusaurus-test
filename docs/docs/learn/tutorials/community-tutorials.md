@@ -4,7 +4,7 @@ If you're interested in learning more about jsPsych, prefer video tutorials, or 
 
 ## Version 8.x
 
-Currently there many aren't any tutorials specific to jsPsych version `8.x` due to the relatively recent release date. However, concerning most experiments, the `7.x` tutorials should provide plenty of information. Along with this, our [migration guide](../support/migration-v8.md) can also assist in bridging the gap, though most breaking changes have to do with plugin development, rather than experiment building.
+Currently there many aren't any tutorials specific to jsPsych version `8.x` due to the relatively recent release date. However, concerning most experiments, the `7.x` tutorials should provide plenty of information. Along with this, our [migration guide](../../support/migration-v8.md) can also assist in bridging the gap, though most breaking changes have to do with plugin development, rather than experiment building.
 
 ### University of Edinburgh
 

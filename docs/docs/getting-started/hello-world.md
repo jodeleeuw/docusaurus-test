@@ -148,7 +148,7 @@ Once the plugin is loaded we can create a trial using the plugin. To declare a t
 
 ### Step 5: Run the experiment
 
-Now that we have the trial defined we need to tell jsPsych to run an experiment consisting of this trial. This requires using the `jsPsych.run` function and passing in a [timeline](learn/researchers/overview/timeline.md). For a simple experiment like this one, the timeline is just an array containing the list of trials to run.
+Now that we have the trial defined we need to tell jsPsych to run an experiment consisting of this trial. This requires using the `jsPsych.run` function and passing in a [timeline](../learn/concepts/timeline.md). For a simple experiment like this one, the timeline is just an array containing the list of trials to run.
 
 ```html {18}
 <!DOCTYPE html>
@@ -334,7 +334,7 @@ Once the plugin is loaded we can create a trial using the plugin. To declare a t
 
 ### Step 7: Run the experiment
 
-Now that we have the trial defined we need to tell jsPsych to run an experiment consisting of this trial. This requires using the `jsPsych.run` function and passing in a [timeline](learn/researchers/overview/timeline.md). For a simple experiment like this one, the timeline is just an array containing the list of trials to run.
+Now that we have the trial defined we need to tell jsPsych to run an experiment consisting of this trial. This requires using the `jsPsych.run` function and passing in a [timeline](../learn/concepts/timeline.md). For a simple experiment like this one, the timeline is just an array containing the list of trials to run.
 
 ```html {18}
 <!DOCTYPE html>
@@ -432,7 +432,7 @@ const trial = {
 
 ### Step 6: Run
 
-Now that we have the trial defined we need to tell jsPsych to run an experiment consisting of this trial. This requires using the `jsPsych.run` function and passing in a [timeline](learn/researchers/overview/timeline.md). For a simple experiment like this one, the timeline is just an array containing the list of trials to run.
+Now that we have the trial defined we need to tell jsPsych to run an experiment consisting of this trial. This requires using the `jsPsych.run` function and passing in a [timeline](../learn/concepts/timeline.md). For a simple experiment like this one, the timeline is just an array containing the list of trials to run.
 
 ```js {11}
 import {initJsPsych} from 'jspsych';
