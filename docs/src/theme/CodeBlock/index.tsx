@@ -31,14 +31,17 @@ function codeToString(children: ReactNode): string {
   return '';
 }
 
-// Rewrite relative `img/...` (or `/img/...`) asset references to absolute URLs
-// rooted at the site, so they resolve from a blob: origin. CDN/absolute URLs
-// (https://...) don't match this pattern and are left untouched.
-function absolutizeAssets(html: string, base: string): string {
-  return html.replace(
-    /(src|href)=("|')\/?(img\/[^"']+)\2/g,
-    (_match, attr, quote, path) => `${attr}=${quote}${base}${path}${quote}`,
-  );
+// Rewrite relative asset paths to absolute URLs rooted at the site, so they
+// resolve from a blob: origin. Matches any quoted path that begins with a known
+// asset directory — covering both HTML attributes (`src="img/a.png"`) and the
+// JavaScript string references jsPsych uses (timeline variables, `preload`
+// lists, etc.). Already-absolute URLs (`"https://.../img/.."`) start with the
+// protocol, not the asset dir, so they don't match and are left untouched.
+const ASSET_DIRS = 'img|images|audio|video|sound|media|assets|stimuli';
+
+function absolutizeAssets(code: string, base: string): string {
+  const re = new RegExp(`(["'])\\/?((?:${ASSET_DIRS})\\/[^"']+)\\1`, 'g');
+  return code.replace(re, (_match, quote, path) => `${quote}${base}${path}${quote}`);
 }
 
 export default function CodeBlockWrapper(props: Props): ReactNode {
