@@ -1,0 +1,50 @@
+/* Container so the toolbar sits flush under the code block. */
+.runnable {
+  margin-bottom: var(--ifm-leading);
+}
+
+/* The code block carries its own bottom margin; collapse it so the toolbar
+   reads as part of the same unit. */
+.runnable > :global(.theme-code-block),
+.runnable > div[class*='codeBlockContainer'] {
+  margin-bottom: 0;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.4rem 0.5rem;
+  background: var(--ifm-code-background);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-top: none;
+  border-radius: 0 0 var(--ifm-global-radius) var(--ifm-global-radius);
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.8rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: var(--ifm-color-primary);
+  border: none;
+  border-radius: var(--ifm-global-radius);
+  cursor: pointer;
+  transition: background-color 150ms ease, transform 150ms ease;
+}
+
+.button:hover {
+  background-color: var(--ifm-color-primary-dark);
+  transform: translateY(-1px);
+}
+
+.button:active {
+  transform: translateY(0);
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--jspsych-orange);
+  outline-offset: 2px;
+}

@@ -100,7 +100,7 @@ Despite the name, `survey_json` takes a regular JavaScript object, not a JSON st
 <details>
 <summary><strong>The complete code so far</strong></summary>
 
-```html
+```html runnable
 <!DOCTYPE html>
 <html>
   <head>
@@ -310,7 +310,7 @@ From here on we'll keep building up this single `survey_json` object, since it d
 <details>
 <summary><strong>The complete code so far</strong></summary>
 
-```html
+```html runnable
 <!DOCTYPE html>
 <html>
   <head>
@@ -500,7 +500,7 @@ const responses = jsPsych.data.get().filter({ trial_type: "survey" }).last(1).va
 
 Putting it all together, here is the complete survey instrument.
 
-```html
+```html runnable
 <!DOCTYPE html>
 <html>
   <head>
