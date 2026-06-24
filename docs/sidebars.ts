@@ -21,6 +21,7 @@ const sidebars: SidebarsConfig = {
       collapsed: false,
       items: [
         {type: 'doc', id: 'learn/tutorials/rt-task', label: 'Reaction-time task tutorial'},
+        {type: 'doc', id: 'learn/tutorials/survey-instrument', label: 'Survey instrument tutorial'},
         {type: 'doc', id: 'learn/tutorials/community-tutorials', label: 'Community tutorials'},
       ],
     },
